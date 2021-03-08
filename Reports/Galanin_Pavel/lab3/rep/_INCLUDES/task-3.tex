@@ -1,0 +1,206 @@
+\subparagraph{Задание 3} \textbf{Условие}:
+
+Вывести сообщение с помощью команды \verb|echo| в канал ошибок.
+Создать файл \verb|myscript|:
+
+\begin{verbatim}
+    #!/bin/sh
+    echo stdout
+    echo stderr>&2
+    exit 0
+\end{verbatim}
+
+Запустить его:
+\begin{itemize}
+    \item без перенаправления (sh myscript)
+    \item перенаправив стандартный вывод в файл, просмотреть содержимое файла (sh myscript \verb|>| file1)
+    \item перенаправить стандартный канал ошибок в существующий и несуществующий файлы с помощью символов \verb|>| и \verb|>>|
+    \item перенаправив стандартный вывод в файл 1, стандартный канал ошибок - в файл 2
+    \item перенаправив стандартный вывод и стандартный канал ошибок в файл 3
+    \item перенаправив стандартный вывод в файл 4 с помощью символа \verb|>|, а стандартный канал ошибок в файл 4 с помощью символа \verb|>>|
+\end{itemize}
+
+Объяснить результаты.
+
+\textbf{Решение}:
+
+Создаем файл.
+
+\begin{BashBox}
+nano myscipt
+\end{BashBox}
+
+Пишем текст.
+
+\begin{BashBox}
+#!/bin/sh
+echo stdout
+echo stderr>&2
+exit 0
+\end{BashBox}
+
+Сохраняем: \textbf{Ctrl} + \textbf{X}, \textbf{Y}, \textbf{Enter}.
+
+Запускаем скрипт.
+
+\begin{BashBox}
+sh myscript
+\end{BashBox}
+
+\begin{OutBox}
+stdout
+stderr
+\end{OutBox}
+
+Перенаправляем стандартный вывод в файл.
+
+\begin{BashBox}
+sh myscript > file1
+\end{BashBox}
+
+\begin{OutBox}
+stderr
+\end{OutBox}
+
+Просматриваем содержимое файла.
+
+\begin{BashBox}
+cat file1
+\end{BashBox}
+
+\begin{OutBox}
+stdout
+\end{OutBox}
+
+Перенаправляем стандартный поток в несуществующий файл с помощью символа больше \verb|>|.
+
+\begin{BashBox}
+sh myscript > 3_file-1.txt
+\end{BashBox}
+
+\begin{OutBox}
+stderr
+\end{OutBox}
+
+\begin{BashBox}
+cat 3_file-1.txt
+\end{BashBox}
+
+\begin{OutBox}
+stdout
+\end{OutBox}
+
+Перенаправляем стандартный поток в несуществующий файл с помощью двух символов больше \verb|>>|.
+
+\begin{BashBox}
+sh myscript >> 3_file-2.txt
+\end{BashBox}
+
+\begin{OutBox}
+stderr
+\end{OutBox}
+
+\begin{BashBox}
+cat 3_file-2.txt
+\end{BashBox}
+
+\begin{OutBox}
+stdout
+\end{OutBox}
+
+Перенаправляем стандартный поток в существующий файл с помощью символа больше \verb|>|.
+
+\begin{BashBox}
+sh myscript > 3_file-1.txt
+\end{BashBox}
+
+\begin{OutBox}
+stderr
+\end{OutBox}
+
+\begin{BashBox}
+cat 3_file-1.txt
+\end{BashBox}
+
+\begin{OutBox}
+stdout
+\end{OutBox}
+
+Перенаправляем стандартный поток в существующий файл с помощью двух символов больше \verb|>>|.
+
+\begin{BashBox}
+sh myscript >> 3_file-2.txt
+\end{BashBox}
+
+\begin{OutBox}
+stderr
+\end{OutBox}
+
+\begin{BashBox}
+cat 3_file-2.txt
+\end{BashBox}
+
+\begin{OutBox}
+stdout
+stdout
+\end{OutBox}
+
+Перенаправляем стандартный вывод в файл 1.
+
+\begin{BashBox}
+sh myscript 1>1.txt
+\end{BashBox}
+
+\begin{OutBox}
+stderr
+\end{OutBox}
+
+\begin{BashBox}
+cat 1.txt
+\end{BashBox}
+
+\begin{OutBox}
+stdout
+\end{OutBox}
+
+Перенаправляем стандартный канал ошибок в файл 2.
+
+\begin{BashBox}
+sh myscript 2>2.txt
+\end{BashBox}
+
+\begin{OutBox}
+stdout
+\end{OutBox}
+
+\begin{BashBox}
+cat 2.txt
+\end{BashBox}
+
+\begin{OutBox}
+stderr
+\end{OutBox}
+
+Перенаправляем стандартный вывод и стандартный канал ошибок в файл 3.
+
+\begin{BashBox}
+sh myscript 1>3.txt 2>>3.txt
+cat 3.txt
+\end{BashBox}
+
+\begin{OutBox}
+stdout
+stderr
+\end{OutBox}
+
+Перенаправляем стандартный вывод в файл 4 с помощью символа \verb|>|, а стандартный канал ошибок в файл 4 с помощью символа \verb|>>|.
+
+\begin{BashBox}
+sh myscript 1>4.txt 2>>4.txt
+cat 4.txt
+\end{BashBox}
+
+\begin{OutBox}
+stdout
+stderr
+\end{OutBox}

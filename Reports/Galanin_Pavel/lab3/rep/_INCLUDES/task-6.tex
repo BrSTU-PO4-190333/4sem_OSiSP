@@ -1,0 +1,83 @@
+\subparagraph{Задание 6} \textbf{Условие}:
+
+Переадресовать стандартный ввод для команды cat на файл.
+
+\textbf{Решение}:
+
+Создаем файл.
+
+\begin{BashBox}
+nano myscript
+\end{BashBox}
+
+Пишем sh-скрипт.
+
+\begin{BashBox}
+#!/bin/bash
+for i in "$@"
+    do
+    echo "$i"
+done
+exit 0
+\end{BashBox}
+
+Сохраняем нажатиями клавиш \textbf{Ctrl} + \textbf{X}, \textbf{Y}, \textbf{Enter}.
+
+Запускаем скрипт через sh.
+
+\begin{BashBox}
+sh myscript a b c d e f
+\end{BashBox}
+
+\begin{OutBox}
+a
+b
+c
+d
+e
+f
+\end{OutBox}
+
+Запускаем скрипт как файл.
+
+\begin{BashBox}
+./myscript a b c d e f
+\end{BashBox}
+
+\begin{OutBox}
+bash: ./myscript: Permission denied
+\end{OutBox}
+
+Нет прав на исполнение. Добавим права - и запустим скрипт.
+
+\begin{BashBox}
+ls -l myscript
+\end{BashBox}
+
+\begin{OutBox}
+-rw-rw-r-- 1 pavel-innokentevich-galanin pavel-innokentevich-galanin 83 Mar  2 03:59 myscript
+\end{OutBox}
+
+\begin{BashBox}
+chmod a+x myscript
+ls -l myscript
+\end{BashBox}
+
+\begin{OutBox}
+-rwxrwxr-x 1 pavel-innokentevich-galanin pavel-innokentevich-galanin 83 Mar  2 03:59 myscript
+\end{OutBox}
+
+Запускаем скрипт.
+
+\begin{BashBox}
+./myscript a b c d e f
+\end{BashBox}
+
+\begin{OutBox}
+a
+b
+c
+d
+e
+f
+\end{OutBox}

@@ -1,0 +1,8 @@
+# Simple docker-compose file to easily run latex containers
+# Usage: docker-compose run latex /bin/bash
+version: '3'
+services:
+  latex: # name of the service
+    image: mirisbowring/texlive_ctan_full:2019
+    volumes: # current folder accessible under /content
+      - .:/content

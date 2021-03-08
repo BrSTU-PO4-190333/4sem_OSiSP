@@ -1,0 +1,181 @@
+\subparagraph{Задание 7} \textbf{Условие}:
+
+Написать скрипт согласно индивидуальному заданию. Номер варианта согласовать с преподавателем.
+
+\begin{center}
+    \textbf{Вариант 5}
+\end{center}
+
+Реализовать меню из трех пунктов (в цикле):
+
+\begin{enumerate}
+    \item[1)] поиск файла в каталоге. \verb|<Имя файла>| и \verb|<Имя каталога>| вводятся пользователем с клавиатуры;
+    \item[2)] копирование одного файла в другой каталог. \verb|<Имя файла>| и \verb|<Имя каталога>| вводятся пользователем с клавиатуры;
+    \item[3)] завершение.
+\end{enumerate}
+
+\textbf{Решение}:
+
+\begin{MyBox}[label=Листинг,numbers=left,]
+#! /bin/bash
+
+function clear_line {
+	echo ""
+}
+
+function menu {
+	clear_line
+	echo "Menu:"
+	echo "1. Find file in directory"
+	echo "2. Copy file to directory"
+	echo "3. Exit"
+	clear_line
+}
+
+function find_file_in_folder {
+	echo "alpha"
+
+	echo "find <path> -name <whatFind>"
+	clear_line
+
+	echo "path (the path to search in) ="
+	read path
+	clear_line
+
+	echo "whatFind ="
+	read whatFind
+	clear_line
+
+	echo "find $path -name $whatFind"
+	find $path -name $whatFind
+	clear_line
+}
+
+function copy_file_to_directory {
+	echo "cp <path1> <path2>"
+	clear_line
+
+	echo "path1 (the path to the file, which you copy) ="
+	read path1
+	clear_line
+
+	echo "path2 (the path to the folder, to which you want to copy) ="
+	read path2
+	clear_line
+
+	echo "cp $path1 $path2"
+	cp $path1 $path2
+	clear_line
+
+	echo "ls $path2"
+	ls $path2
+	clear_line
+}
+
+function main {
+	clear
+	while true
+		do
+			menu
+			read choosenKey
+			clear
+			case $choosenKey in
+				'1')
+					find_file_in_folder
+				;;
+				'2')
+					copy_file_to_directory
+				;;
+				'3')
+					break
+				;;
+			esac # end case
+	done # end while
+}
+
+main
+exit 0
+\end{MyBox}
+
+\newpage
+
+Запускаю скрипт
+
+\begin{OutBox}
+./task-7.sh
+\end{OutBox}
+
+\begin{OutBox}
+Menu:
+1. Find file in directory
+2. Copy file to directory
+3. Exit
+
+1
+\end{OutBox}
+
+Выбираю первый пункт меню
+
+\begin{OutBox}
+alpha
+find <path> -name <whatFind>
+
+path (the path to search in) =
+/home/pavel-innokentevich-galanin/Downloads
+
+whatFind =
+*.pdf
+
+find /home/pavel-innokentevich-galanin/Downloads -name *.pdf
+/home/pavel-innokentevich-galanin/Downloads/Telegram Desktop/ПО-4.pdf
+/home/pavel-innokentevich-galanin/Downloads/Telegram Desktop/EVMiS_Latex.pdf
+
+
+Menu:
+1. Find file in directory
+2. Copy file to directory
+3. Exit
+
+2
+\end{OutBox}
+
+Ввожу путь /home/pavel-innokentevich-galanin/Downloads.
+
+Ввожу что искать *.pdf.
+
+Получаю результат - и появляется меню.
+
+Выбираю второй пункт меню.
+
+\newpage
+
+\begin{OutBox}
+cp <path1> <path2>
+
+path1 (the path to the file, which you copy) =
+/etc/group
+
+path2 (the path to the folder, to which you want to copy) =
+/home/pavel-innokentevich-galanin/Disk-O
+
+cp /etc/group /home/pavel-innokentevich-galanin/Disk-O
+
+ls /home/pavel-innokentevich-galanin/Disk-O
+group
+
+
+Menu:
+1. Find file in directory
+2. Copy file to directory
+3. Exit
+
+3
+\end{OutBox}
+
+Ввожу путь откуда копировать /etc/group.
+
+Ввожу путь куда копировать /home/pavel-innokentevich-galanin/Disk-O.
+
+Получаю результат копирования - и выводится меню.
+
+В меню выбираю пункт 3. Программа завершена.
