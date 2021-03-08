@@ -1,0 +1,44 @@
+\subparagraph{Задание 9} \textbf{Условие}:
+
+Изучите на что влияют права доступа в случае каталогов. Попробуйте зайти в каталог \verb|/root|, объясните результат и причину.
+
+\textbf{Решение}:
+
+\begin{BashBox}
+    cd /root
+\end{BashBox}
+
+\begin{OutBox}
+    bash: cd: /root: Permission denied
+\end{OutBox}
+
+\begin{BashBox}
+    ls -ld /root
+\end{BashBox}
+
+\begin{OutBox}
+    drwx------ 7 root root 4096 Feb 25 23:38 /root
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | }
+        \hline
+        Владелец    & Группа владельца  \\ \hline
+        \hline
+        root 	    & root              \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип           & Владелец  & Группы    & Остальные \\ \hline
+        \hline
+        Символьная запись 	& d             & rwx 	    & --- 	    & ---       \\ \hline
+        Расшифровка 	    & директория    & все права & нет прав  & нет прав  \\ \hline
+    \end{tabular}
+\end{table}
+
+\textbf{Объяснение}: Владелец и группа - root. Значит мы остальные, а там нет прав.

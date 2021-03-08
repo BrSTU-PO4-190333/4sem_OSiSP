@@ -1,0 +1,26 @@
+\subparagraph{Задание 8} \textbf{Условие}:
+
+Скопируйте в свой домашний каталог файл ls из каталога /bin. Запретите выполнение этого файла и попробуйте выполнить именно его, а не исходный(!).
+Объясните результат.
+
+\textbf{Решение}:
+
+\begin{BashBox}
+    cp /bin/ls ~
+    chmod a-x ~/ls
+    ~/ls
+\end{BashBox}
+
+\begin{OutBox}
+    bash: /home/pavel-innokentevich-galanin/ls: Permission denied
+\end{OutBox}
+
+Так как убрали права x, то не можем файл исполнять.
+
+\begin{BashBox}
+    ls -l ~/ls
+\end{BashBox}
+
+\begin{OutBox}
+    -rw-r--r-- 1 pavel-innokentevich-galanin pavel-innokentevich-galanin 142144 Mar  2 00:59 /home/pavel-innokentevich-galanin/ls
+\end{OutBox}
