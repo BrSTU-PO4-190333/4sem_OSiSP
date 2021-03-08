@@ -1,0 +1,25 @@
+% Для работы окружения \begin{Verbatim}\end{Verbatim}
+\usepackage{fancyvrb}
+
+% Для работы параметров breaklines=true, breakanywhere=true, в Verbatim
+\usepackage{fvextra}
+
+% Мой Verbatim
+\DefineVerbatimEnvironment
+{MyVerbatim}{Verbatim}
+{
+    breaklines=true,
+    breakanywhere=true,
+    fontfamily=courier,
+}
+\DefineVerbatimEnvironment
+{MyVerbatimCode}{Verbatim}
+{
+    breaklines=true,
+    breakanywhere=true,
+    fontfamily=courier,
+    frame=single,
+    framesep=4mm,
+    labelposition=all,
+    numbers=left,
+}

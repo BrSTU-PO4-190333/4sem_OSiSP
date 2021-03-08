@@ -1,0 +1,27 @@
+\subsection{Просмотр каталога (ls) системного и начального}
+
+\subparagraph{1) Что нужно было сделать?}
+
+Перейти в системный каталог. Просмотреть его содержимое. Просмотреть содержимое начального каталога. Вернуться в начальный каталог.
+
+\subparagraph{2) Как это сделали?}
+
+\begin{MyVerbatimCode}[label=Debian terminal]
+pavel-innokentevich-galanin@aspire-one-725:~$ ls
+Apps     Documents  Music     Public     Videos    katalog2
+Desktop  Downloads  Pictures  Templates  katalog1  www
+pavel-innokentevich-galanin@aspire-one-725:~$ cd /
+pavel-innokentevich-galanin@aspire-one-725:/$ ls
+bin    dev   lib         media  proc  sbin      sys        usr
+boot   etc   lib64       mnt    root  srv       timeshift  var
+cdrom  home  lost+found  opt    run   swapfile  tmp
+pavel-innokentevich-galanin@aspire-one-725:/$ cd
+pavel-innokentevich-galanin@aspire-one-725:~$ ls
+Apps     Documents  Music     Public     Videos    katalog2
+Desktop  Downloads  Pictures  Templates  katalog1  www    
+\end{MyVerbatimCode}
+
+\subparagraph{3) Что получилось?}
+
+Командой cd сделали переход по директории.
+Команда cd и палочка - переход в системную директорию. Команда cd и тильда или пустота - переход в директорию /home/username/. Командой ls просмотрели содержимое директории.

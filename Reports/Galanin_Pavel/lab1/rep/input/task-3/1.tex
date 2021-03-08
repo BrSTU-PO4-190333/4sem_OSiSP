@@ -1,0 +1,36 @@
+\subsection{Создание структуры каталогов (mkdir -p)}
+
+\subparagraph{1) Что нужно было сделать?}
+
+Создайте в домашнем каталоге следующую структуру подкаталогов
+(существующие каталоги не удаляйте!)
+
+\begin{MyVerbatim}
+a. домашний каталог ----|
+    1. |-ВашаФамилия-|
+        a. |-1-|
+        b. | |-2
+        c. | |-3
+        d. |
+        e. |-4
+\end{MyVerbatim}
+
+\subparagraph{2) Как это сделали?}
+
+\begin{MyVerbatimCode}[label=Debian terminal]
+pavel-innokentevich-galanin@aspire-one-725:~$ mkdir -p Galanin/1/2 Galanin/1/3 Galanin/4
+pavel-innokentevich-galanin@aspire-one-725:~$ tree .. -d --charset anscii
+..
+|-- pavel-innokentevich-galanin
+|   |-- Galanin
+|   |   |-- 1
+|   |   |   |-- 2
+|   |   |   `-- 3
+|   |   `-- 4
+
+2562 directories
+\end{MyVerbatimCode}
+
+\subparagraph{3) Что получилось?}
+
+Создали структуру директорий.

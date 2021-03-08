@@ -1,0 +1,44 @@
+\subsection{Вывод n строчек файла с  головы (head -n) c конца (tail -n)}
+
+\subparagraph{1) Что нужно было сделать?}
+
+Выведите первые и последние 13 строк файла /etc\-/group.
+
+\subparagraph{2) Как это сделали?}
+
+\begin{MyVerbatimCode}[label=Debian terminal]
+pavel-innokentevich-galanin@aspire-one-725:~$ head -n 13 /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog
+tty:x:5:syslog
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+pavel-innokentevich-galanin@aspire-one-725:~$ tail -n 13 /etc/group
+scanner:x:125:saned
+_flatpak:x:126:
+avahi:x:127:
+saned:x:128:
+lightdm:x:129:
+nopasswdlogin:x:130:
+colord:x:131:
+pulse:x:132:
+pulse-access:x:133:
+nm-openvpn:x:134:
+sambashare:x:135:
+docker:x:136:
+pavel-innokentevich-galanin:x:1001:
+\end{MyVerbatimCode}
+
+\subparagraph{3) Что получилось?}
+
+Командой head -n 13 pathFile вывели 13 первых строчек.
+
+Командой tail -n 13 pathFile вывели 13 последних строчек.

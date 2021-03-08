@@ -1,0 +1,21 @@
+\subsection{Создания каталогов (mkdir). Просмотр содержимого (ls) рабочего и родительского каталога}
+
+\subparagraph{1) Что нужно было сделать?}
+
+Создать в начальном каталоге два подкаталога. Просмотреть содержимое рабочего каталога. Просмотреть содержимое родительского каталога, не переходя в него.
+
+\subparagraph{2) Как это сделали?}
+
+\begin{MyVerbatimCode}[label=Debian terminal]
+pavel-innokentevich-galanin@aspire-one-725:~$ mkdir katalog1
+pavel-innokentevich-galanin@aspire-one-725:~$ mkdir katalog2
+pavel-innokentevich-galanin@aspire-one-725:~$ ls
+Apps     Documents  Music     Public     Videos    katalog2
+Desktop  Downloads  Pictures  Templates  katalog1  www
+pavel-innokentevich-galanin@aspire-one-725:~$ ls ..
+pavel-innokentevich-galanin
+\end{MyVerbatimCode}
+
+\subparagraph{3) Что получилось?}
+
+Командой mkdir создали каталоги. Командой ls получили содержимое каталога.

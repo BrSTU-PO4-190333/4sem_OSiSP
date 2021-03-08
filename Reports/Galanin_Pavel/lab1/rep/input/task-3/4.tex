@@ -1,0 +1,17 @@
+\subsection{Копирование (cp) из относительного пути в относительный путь}
+
+\subparagraph{1) Что нужно было сделать?}
+
+Скопируйте файл /etc/group в каталог 3 используя относительные имена копируемого файла и каталога назначения.
+
+\subparagraph{2) Как это сделали?}
+
+\begin{MyVerbatimCode}[label=Debian terminal]
+pavel-innokentevich-galanin@aspire-one-725:~$ cp ../../etc/group Galanin/1/3
+pavel-innokentevich-galanin@aspire-one-725:~$ ls ~/Galanin/1/3
+group
+\end{MyVerbatimCode}
+
+\subparagraph{3) Что получилось?}
+
+Файл group скопировался.
