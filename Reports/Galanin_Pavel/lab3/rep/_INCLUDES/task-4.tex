@@ -1,0 +1,46 @@
+\subparagraph{Задание 4} \textbf{Условие}:
+
+Вывести третью строку из последних десяти строк отсортированного в обратном порядке файла \verb|/etc/group|.
+
+\textbf{Решение}:
+
+Выводим отсортированные последние 10 строк.
+
+\begin{BashBox}
+sort -r /etc/group | tail -n 10
+\end{BashBox}
+
+\begin{OutBox}
+crontab:x:105:
+colord:x:128:
+cdrom:x:24:pavel-innokentevich-galanin
+bluetooth:x:112:
+bin:x:2:
+backup:x:34:
+avahi:x:124:
+avahi-autoipd:x:117:
+audio:x:29:pulse
+adm:x:4:syslog,pavel-innokentevich-galanin
+\end{OutBox}
+
+От отсортированных последних 10-ть строк выводим 3-и первые строки. 
+
+\begin{BashBox}
+sort -r /etc/group | tail -n 10 | head -n 3
+\end{BashBox}
+
+\begin{OutBox}
+crontab:x:105:
+colord:x:128:
+cdrom:x:24:pavel-innokentevich-galanin
+\end{OutBox}
+
+От 3-ех строк вывожу последнюю.
+
+\begin{BashBox}
+sort -r /etc/group | tail -n 10 | head -n 3 | tail -n 1
+\end{BashBox}
+
+\begin{OutBox}
+cdrom:x:24:pavel-innokentevich-galanin
+\end{OutBox}

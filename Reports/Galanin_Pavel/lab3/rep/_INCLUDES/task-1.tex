@@ -1,0 +1,60 @@
+\subparagraph{Задание 1} \textbf{Условие}:
+
+Вывести любое сообщение с помощью команды echo перенаправив вывод:
+
+\begin{itemize}
+    \item в несуществующий файл с помощью символа \verb|>|
+    \item в несуществующий файл с помощью символа \verb|>>|
+    \item в существующий файл с помощью символа \verb|>|
+    \item в существующий файл с помощью символа \verb|>>|
+\end{itemize}
+
+Объяснить результаты.
+
+\textbf{Решение}:
+
+\begin{BashBox}
+echo "Message1" > 1_file-1.txt
+cat 1_file-1.txt
+\end{BashBox}
+
+\begin{OutBox}
+Message1
+\end{OutBox}
+
+\begin{BashBox}
+echo "Message2" >> 1_file-2.txt
+cat 1_file-2.txt
+\end{BashBox}
+
+\begin{OutBox}
+Message2
+\end{OutBox}
+
+\begin{BashBox}
+echo "Message3" > 1_file-1.txt
+cat 1_file-1.txt
+\end{BashBox}
+
+\begin{OutBox}
+Message3
+\end{OutBox}
+
+\begin{BashBox}
+echo "Message4" >> 1_file-2.txt
+cat 1_file-2.txt
+\end{BashBox}
+
+\begin{OutBox}
+Message2
+Message4
+\end{OutBox}
+
+\textbf{Вывод}:
+
+\begin{itemize}
+    \item Если нет файла, то символ больше (\verb|>|) создаст файл с сообщением.
+    \item Если нет файла, то два символа больше (\verb|>>|) создадут файл с сообщением.
+    \item Если файл существует, то символ больше (\verb|>|) перезапишет файл.
+    \item Если файл существует, то два символа больше (\verb|>>|) добавить новую строчку в файл.
+\end{itemize}
