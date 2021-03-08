@@ -1,0 +1,66 @@
+\subparagraph{Задание 3} \textbf{Условие}:
+
+Определите атрибуты файлов \verb|/etc/shadow| и \verb|/etc/passwd| попробуйте вывести на экран содержимое этих файлов.
+Объясните результат.
+
+\textbf{Решение}:
+
+Определяю атрибуты
+
+\begin{BashBox}
+    ls -l /etc/shadow
+\end{BashBox}
+
+\begin{OutBox}
+    -rw-r----- 1 root shadow 1359 Feb 25 22:30 /etc/shadow
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип   & Владелец          & Группы    & Остальные \\ \hline
+        \hline
+        Символьная  запись  & -     & rw-               & r--       & ---       \\ \hline
+        Что значит          & файл  & чтение и запись   & чтение    & нет прав  \\ \hline
+    \end{tabular}
+\end{table}
+
+Пробуем вывести файл
+
+\begin{BashBox}
+    cat /etc/shadow
+\end{BashBox}
+
+\begin{OutBox}
+    cat: /etc/shadow: Permission denied
+\end{OutBox}
+
+Определяю атрибуты
+
+\begin{BashBox}
+    ls -l /etc/passwd
+\end{BashBox}
+
+\begin{OutBox}
+    -rw-r--r-- 1 root root 2598 Feb 25 22:30 /etc/passwd
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип   & Владелец          & Группы    & Остальные \\ \hline
+        \hline
+        Символьная  запись  & -     & rw-               & r--       & к--       \\ \hline
+        Что значит          & файл  & чтение и запись   & чтение    & чтение    \\ \hline
+    \end{tabular}
+\end{table}
+
+Пробуем вывести файл
+
+\begin{BashBox}
+    cat /etc/passwd
+\end{BashBox}
+
+Файл вывелся в консоль

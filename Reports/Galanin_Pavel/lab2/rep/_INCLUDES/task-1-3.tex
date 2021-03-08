@@ -1,0 +1,72 @@
+\subparagraph{Задание 3} \textbf{Условие}:
+
+Создать жесткую и символьную ссылки на файл. С помощью команды ls
+просмотреть inod файла и ссылок. Объяснить результат.
+
+\textbf{Решение}:
+
+Изучаем назначение и ключи команды ln
+
+\begin{BashBox}
+    man ln
+\end{BashBox}
+
+Создаем файл
+
+\begin{BashBox}
+    nano 1-2_file.txt
+\end{BashBox}
+
+Пишем текст
+
+\begin{BashBox}
+    The storm broke today
+    and the sun came out.
+\end{BashBox}
+
+Сохраняем нажатием: \textbf{Ctrl} + \textbf{X}, \textbf{Y}, \textbf{Enter}.
+
+Создаём символьную ссылку на файл
+
+\begin{BashBox}
+    ln -s 1-2_file.txt 1-2_file-link.txt
+\end{BashBox}
+
+Просматриваем содержимое файла с помощью сслыки
+
+\begin{BashBox}
+    cat 1-2_file-link.txt
+\end{BashBox}
+
+\begin{OutBox}
+    The storm broke today
+    and the sun came out.
+\end{OutBox}
+
+Удаляем файл
+
+\begin{BashBox}
+    rm 1-2_file.txt
+\end{BashBox}
+
+Просматриваем содержимое файла с помощью сслыки
+
+\begin{BashBox}
+    cat 1-2_file-link.txt
+\end{BashBox}
+
+\begin{OutBox}
+    cat: 1-2_file-link.txt: No such file or directory
+\end{OutBox}
+
+Создаем каталог
+
+\begin{BashBox}
+    mkdir 1-2_katalog
+\end{BashBox}
+
+Создаем жёсткую ссылку на каталог
+
+\begin{BashBox}
+    ln -s 1-2_katalog 1-2_katalog-link
+\end{BashBox}

@@ -1,0 +1,16 @@
+\subparagraph{Задание 7} \textbf{Условие}:
+
+В домашнем каталоге создайте файл и установите на него права так, чтобы его можно было только редактировать.
+
+\textbf{Решение}:
+
+\begin{BashBox}
+    touch ~/2-7_file.txt
+    chmod a-rwx ~/2-7_file.txt
+    chmod ugo+w ~/2-7_file.txt
+    ls -l ~/2-7_file.txt
+\end{BashBox}
+
+\begin{OutBox}
+    --w--w--w- 1 pavel-innokentevich-galanin pavel-innokentevich-galanin 0 Mar  2 00:57 /home/pavel-innokentevich-galanin/2-7_file.txt
+\end{OutBox}
