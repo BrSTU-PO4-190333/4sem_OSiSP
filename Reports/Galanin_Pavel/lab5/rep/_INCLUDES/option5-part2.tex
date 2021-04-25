@@ -44,21 +44,16 @@ make test1
 
 \begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
 cd bin; ps | ./app
-= = = = = Input = = = = =
-[
-    PID TTY          TIME CMD569721492
-17366 pts/3    00:00:00 bash846930886
-17739 pts/3    00:00:00 make447124886
-17740 pts/3    00:00:00 sh480069024
-17741 pts/3    00:00:00 ps723179902
-17742 pts/3    00:00:00 app424238335
-]
-= = = = = Output = = = = =
-[
-17366 pts/3    00:00:00 bash846930886
-17740 pts/3    00:00:00 sh480069024
-17742 pts/3    00:00:00 app424238335
-]
+ ~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+  PID TTY          TIME CMD
+ 1745 pts/2    00:00:00 bash
+ 6516 pts/2    00:00:00 make
+ 6517 pts/2    00:00:00 sh
+ 6518 pts/2    00:00:00 ps
+ 6519 pts/2    00:00:00 app
+ ~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+ 6516 pts/2    00:00:00 make447124886
+ 6518 pts/2    00:00:00 ps723179902
 \end{lstlisting}
 
 \paragraph{}
@@ -70,19 +65,18 @@ make test2
 
 \begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
 cd bin; ps | sort | ./app
-= = = = = Input = = = = =
-[
-17366 pts/3    00:00:00 bash569721492
-17783 pts/3    00:00:00 make846930886
-17784 pts/3    00:00:00 sh447124886
-17785 pts/3    00:00:00 ps480069024
-    PID TTY          TIME CMD723179902
-]
-= = = = = Output = = = = =
-[
-17366 pts/3    00:00:00 bash569721492
-17784 pts/3    00:00:00 sh447124886
-]
+ ~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+ 1745 pts/2    00:00:00 bash
+ 6524 pts/2    00:00:00 make
+ 6525 pts/2    00:00:00 sh
+ 6526 pts/2    00:00:00 ps
+ 6527 pts/2    00:00:00 sort
+ 6528 pts/2    00:00:00 app
+  PID TTY          TIME CMD
+ ~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+ 6524 pts/2    00:00:00 make846930886
+ 6526 pts/2    00:00:00 ps480069024
+ 6528 pts/2    00:00:00 app424238335
 \end{lstlisting}
 
 \paragraph{}
@@ -94,18 +88,13 @@ make test3
 
 \begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
 cd bin; ps | head -n 4 | ./app
-= = = = = Input = = = = =
-[
-    PID TTY          TIME CMD569721492
-17366 pts/3    00:00:00 bash846930886
-17902 pts/3    00:00:00 make447124886
-17903 pts/3    00:00:00 sh480069024
-]
-= = = = = Output = = = = =
-[
-17366 pts/3    00:00:00 bash846930886
-17902 pts/3    00:00:00 make447124886
-]
+ ~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+  PID TTY          TIME CMD
+ 1745 pts/2    00:00:00 bash
+ 6534 pts/2    00:00:00 make
+ 6535 pts/2    00:00:00 sh
+ ~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+ 6534 pts/2    00:00:00 make447124886
 \end{lstlisting}
 
 \paragraph{}
@@ -117,18 +106,14 @@ make test4
 
 \begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
 cd bin; ps | tail -n 4 | ./app
-= = = = = Input = = = = =
-[
-17945 pts/3    00:00:00 sh569721492
-17946 pts/3    00:00:00 ps846930886
-17947 pts/3    00:00:00 tail447124886
-17948 pts/3    00:00:00 app480069024
-]
-= = = = = Output = = = = =
-[
-17946 pts/3    00:00:00 ps846930886
-17948 pts/3    00:00:00 app480069024
-]
+ ~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+ 6544 pts/2    00:00:00 sh
+ 6545 pts/2    00:00:00 ps
+ 6546 pts/2    00:00:00 tail
+ 6547 pts/2    00:00:00 app
+ ~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+ 6544 pts/2    00:00:00 sh569721492
+ 6546 pts/2    00:00:00 tail447124886
 \end{lstlisting}
 
 \paragraph{}
