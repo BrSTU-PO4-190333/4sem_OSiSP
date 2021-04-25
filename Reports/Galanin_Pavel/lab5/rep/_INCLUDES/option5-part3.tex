@@ -1,0 +1,131 @@
+\subparagraph{Часть III} Вариант 5, 15
+
+Откройте любой текстовый файл и добавляйте в стандартном выводе к имени процессов не число, а очередное слово из этого файла.
+
+\textbf{Решение}:
+
+\lstinputlisting[
+    name=main.c,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-part3/src/main.c}
+
+\lstinputlisting[
+    name=Makefile,
+    language=make,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-part3/Makefile}
+
+\paragraph{}
+Компиляция
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+mkdir -p bin
+cd bin; gcc ./../src/main.c -o app
+\end{lstlisting}
+
+\paragraph{}
+Test 1 (ps)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test1
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | ./app
+= = = = = Input = = = = =
+[
+    PID TTY          TIME CMDipsum
+17366 pts/3    00:00:00 bashdolor
+20904 pts/3    00:00:00 makesit
+20905 pts/3    00:00:00 shamet
+20906 pts/3    00:00:00 psconsectetur
+20907 pts/3    00:00:00 appadipisicing
+]
+= = = = = Output = = = = =
+[
+17366 pts/3    00:00:00 bashdolor
+20904 pts/3    00:00:00 makesit
+20906 pts/3    00:00:00 psconsectetur
+]
+\end{lstlisting}
+
+\paragraph{}
+Test 2 (ps | sort)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test2
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | sort | ./app
+= = = = = Input = = = = =
+[
+17366 pts/3    00:00:00 bashipsum
+20914 pts/3    00:00:00 makedolor
+20915 pts/3    00:00:00 shsit
+20916 pts/3    00:00:00 psamet
+20917 pts/3    00:00:00 shconsectetur
+20918 pts/3    00:00:00 appadipisicing
+    PID TTY          TIME CMDelit
+]
+= = = = = Output = = = = =
+[
+17366 pts/3    00:00:00 bashipsum
+20914 pts/3    00:00:00 makedolor
+20916 pts/3    00:00:00 psamet
+20918 pts/3    00:00:00 appadipisicing
+]
+\end{lstlisting}
+
+\paragraph{}
+Test 3 (ps | head -n 4)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test3
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | head -n 4 | ./app
+= = = = = Input = = = = =
+[
+    PID TTY          TIME CMDipsum
+17366 pts/3    00:00:00 bashdolor
+20924 pts/3    00:00:00 makesit
+20925 pts/3    00:00:00 shamet
+]
+= = = = = Output = = = = =
+[
+17366 pts/3    00:00:00 bashdolor
+20924 pts/3    00:00:00 makesit
+]
+\end{lstlisting}
+
+\paragraph{}
+Test 4 (ps | tail -n 4)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test4
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | tail -n 4 | ./app
+= = = = = Input = = = = =
+[
+20943 pts/3    00:00:00 shipsum
+20944 pts/3    00:00:00 psdolor
+20945 pts/3    00:00:00 shsit
+20946 pts/3    00:00:00 appamet
+]
+= = = = = Output = = = = =
+[
+20944 pts/3    00:00:00 psdolor
+20946 pts/3    00:00:00 appamet
+]
+\end{lstlisting}
