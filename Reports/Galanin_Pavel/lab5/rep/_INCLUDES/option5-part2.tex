@@ -1,0 +1,147 @@
+\subparagraph{Часть 2} Вариант 5, 15
+
+\textbf{Условие}:
+Написать  программу,  которая  получает  со  стандартного  потока  ввода список активных процессов, и выводит в стандартный поток вывода процессы только с четными PID, добавив к имени процессов любое число. Протестировать с использованием конвейеров в различных комбинациях вашей программы и команд ps, sort, head, tail.
+
+\textbf{Решение}:
+
+\lstinputlisting[
+    name=Makefile,
+    language=make,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-part2/Makefile}
+
+\newpage
+
+\lstinputlisting[
+    name=main.c,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-part2/src/main.c}
+
+\newpage
+
+\paragraph{}
+Компиляция
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+mkdir -p bin
+cd bin; gcc ./../src/main.c -o app
+\end{lstlisting}
+    
+\paragraph{}
+Тест 1 (ps)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test1
+\end{lstlisting}
+
+\begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | ./app
+= = = = = Input = = = = =
+[
+    PID TTY          TIME CMD569721492
+17366 pts/3    00:00:00 bash846930886
+17739 pts/3    00:00:00 make447124886
+17740 pts/3    00:00:00 sh480069024
+17741 pts/3    00:00:00 ps723179902
+17742 pts/3    00:00:00 app424238335
+]
+= = = = = Output = = = = =
+[
+17366 pts/3    00:00:00 bash846930886
+17740 pts/3    00:00:00 sh480069024
+17742 pts/3    00:00:00 app424238335
+]
+\end{lstlisting}
+
+\paragraph{}
+Тест 2 (ps | sort)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test2
+\end{lstlisting}
+
+\begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | sort | ./app
+= = = = = Input = = = = =
+[
+17366 pts/3    00:00:00 bash569721492
+17783 pts/3    00:00:00 make846930886
+17784 pts/3    00:00:00 sh447124886
+17785 pts/3    00:00:00 ps480069024
+    PID TTY          TIME CMD723179902
+]
+= = = = = Output = = = = =
+[
+17366 pts/3    00:00:00 bash569721492
+17784 pts/3    00:00:00 sh447124886
+]
+\end{lstlisting}
+
+\paragraph{}
+Тест 3 (ps | head -n 4)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test3
+\end{lstlisting}
+
+\begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | head -n 4 | ./app
+= = = = = Input = = = = =
+[
+    PID TTY          TIME CMD569721492
+17366 pts/3    00:00:00 bash846930886
+17902 pts/3    00:00:00 make447124886
+17903 pts/3    00:00:00 sh480069024
+]
+= = = = = Output = = = = =
+[
+17366 pts/3    00:00:00 bash846930886
+17902 pts/3    00:00:00 make447124886
+]
+\end{lstlisting}
+
+\paragraph{}
+Тест 4 (ps | tail -n 4)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test4
+\end{lstlisting}
+
+\begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | tail -n 4 | ./app
+= = = = = Input = = = = =
+[
+17945 pts/3    00:00:00 sh569721492
+17946 pts/3    00:00:00 ps846930886
+17947 pts/3    00:00:00 tail447124886
+17948 pts/3    00:00:00 app480069024
+]
+= = = = = Output = = = = =
+[
+17946 pts/3    00:00:00 ps846930886
+17948 pts/3    00:00:00 app480069024
+]
+\end{lstlisting}
+
+\paragraph{}
+Очистка проекта
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make clean
+\end{lstlisting}
+    
+\begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
+rm -rfv bin
+removed 'bin/app'
+removed directory 'bin'
+\end{lstlisting}
+
+\newpage

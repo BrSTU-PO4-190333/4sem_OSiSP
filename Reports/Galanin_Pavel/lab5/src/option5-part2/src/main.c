@@ -69,7 +69,7 @@ int main()
     printf(" = = = = = Input = = = = =\n");
     WordNode__print_down_to_top(string_list, WordNode__print_word);
 
-    WordNode__print_down_to_top(string_list, WordNode__print);
+    //WordNode__print_down_to_top(string_list, WordNode__print);
 
     for (struct WordNode* temp = WordNode__get_bottom(string_list); temp != NULL; temp = temp->right)
     {
@@ -100,7 +100,7 @@ int main()
             str = (char*) realloc(str, str_size * sizeof(char));
             str[str_size - 1] = ch;
         }
-        WordNode__print_down_to_top(words_list, WordNode__print);
+        //WordNode__print_down_to_top(words_list, WordNode__print);
         int number = atoi( WordNode__get_bottom(words_list)->word );
         if( number != 0 && number % 2 == 0 )
         {
@@ -125,7 +125,7 @@ int main()
 struct WordNode* WordNode__Constructor(struct WordNode* object, char* word)
 {
     object = (struct WordNode*) malloc(sizeof(struct WordNode));
-    printf("%p Constructor\n", object);
+    //printf("%p Constructor\n", object);
     if (object == NULL)
     {
         printf("Не выделилась память\n");
@@ -150,7 +150,7 @@ struct WordNode* WordNode__Destructor(struct WordNode* object)
     {
         free(temp->word);
         object = temp;
-        printf("%p Destructor\n", object);
+        //printf("%p Destructor\n", object);
         temp = temp->left;
         free(object);
     }
