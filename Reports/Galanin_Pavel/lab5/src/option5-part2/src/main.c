@@ -1,88 +1,291 @@
-#include <unistd.h> //read()
+// библиотеки
+
 #include <stdio.h>  //printf()
-#include <stdlib.h> //calloc(), realloc(), free(), atoi()
-#include <string.h> //strcpy(), strlen(), strtok()
+#include <unistd.h> //read()
+#include <stdlib.h> //calloc(), free(), realloc(), rand()
+#include <string.h> //strcmp(), strlen(), atoi(), strcat()
 
-// Функция копирует массив слов и возвращает новый массив. Размер строки изменяется по ссылке
-char** get_words_and_len_by_split(char* str, int* length, char* split);
+// прототипы
 
-// Функция выделяет память для нового массива слов, его копирует, возвращает.
-char** get_copy_words(char** words, int length);
+struct WordNode
+{
+    char* word;
+    struct WordNode* left;
+    struct WordNode* right;
+};
+struct WordNode* WordNode__Constructor(struct WordNode* object, char* word);
+struct WordNode* WordNode__Destructor(struct WordNode* object);
+struct WordNode* WordNode__add_top(struct WordNode* object, char* word);
+struct WordNode* WordNode__get_bottom(struct WordNode* object);
+void WordNode__print(struct WordNode* object);
+void WordNode__print_word(struct WordNode* object);
+void WordNode__print_down_to_top(
+    struct WordNode* object, 
+    void (*func)(struct WordNode* object)
+);
+void WordNode__print_top_to_down(
+    struct WordNode* object,
+    void (*func)(struct WordNode* object)
+);
+void WordNode__set_word(struct WordNode* object, char* word);
+int get_depth_long_int(long int N);
+char* get_string_with_number_hash(char* str, long int number);
 
-// Функция очищает динамическую память. Удаляет массив слов. 
-void words_destructor(char** arr, int length);
+// главная программа
 
 int main()
 {
-    const int buffer_size = 1024;   // размер строки
-    char str[buffer_size];          // инициализация статической строки
-    read(0, str, buffer_size);      // Читает 0-евой поток. Записывает в str. Cимволов buffer_size
-    printf("\nCтрока до:\n");
-    printf("%s\n", str);            // печатаем полученную строку
+    struct WordNode* string_list = NULL;
+    struct WordNode* result = NULL;
 
-    // выделяем память под массив. Разбиваем строки по '\n'
-    int length = 0; // размер массива. изменится ниже
-    char** arrWords = get_words_and_len_by_split(str, &length, "\n");
-    // копируем массив, так как другой массив повертиться после функции strtok
-    char** arrWords_copy = get_copy_words(arrWords, length);   
-    
-    // как разбили строки по пробелам, то у нас строки, наприме, такие:
-    // "2739 pts/2    00:00:00 bash"
-    // эту строку разбиваем по ' ' (пробелам), чтобы под 0-евым индексом получить число
-    // [ "2739", "pts/2", "00:00:00", "bash" ]
-    // { 0: "2739", 1: "pts/2", 2: "00:00:00", 3: "bash" }
-    printf("\nСтрока после:\n");
-    for (int i = 0; i < length; i++)
+    const int buffer_size = 1;
+    char buffer[buffer_size];
+
+    int str_size = 0;
+    char* str = (char*) calloc(str_size, sizeof(char*));
+    while(read(0, buffer, buffer_size))
     {
-        // получаем массив слов и размер массива
-        int len = 0;// размер массива слов. изменится ниже
-        char** list_words = get_words_and_len_by_split(arrWords[i], &len, " ");
-
-        int number = atoi(list_words[0]);                   // переводим 0-евой элемент в число
-        if(number != 0 && number % 2 == 0)                  // если это число, и если число чётное
+        char character = buffer[0];
+        if (character == '\n')
         {
-            printf("%s\n", arrWords_copy[i]);               // печатем строку
+
+            int a = 0, b = 1234567890;
+            int rand_number = rand() % (b - a + 1) + a;
+            str = get_string_with_number_hash(str, rand_number);
+
+            string_list = WordNode__add_top(string_list, str);
+
+            str_size = 0;
+            str = (char*) realloc(str, str_size * sizeof(char));
+
+            continue;
         }
-        words_destructor(list_words, len);                  // удаляем массив строк
+        str_size += 1;
+        str = (char*) realloc(str, str_size * sizeof(char));
+        str[str_size - 1] = character;
     }
-    words_destructor(arrWords, length);                     // удаляем массив строк
+    free(str);
+
+    printf(" = = = = = Input = = = = =\n");
+    WordNode__print_down_to_top(string_list, WordNode__print_word);
+
+    WordNode__print_down_to_top(string_list, WordNode__print);
+
+    for (struct WordNode* temp = WordNode__get_bottom(string_list); temp != NULL; temp = temp->right)
+    {
+        str_size = 0;
+        str = (char*) calloc(str_size, sizeof(char));
+        if (str == NULL)
+        {
+            printf("Память не выделилась\n");
+        }
+        //printf("word = %s\n", temp->word);
+
+        struct WordNode* words_list = NULL;
+        for (int i = 0; ; i++)
+        {
+            char ch = temp->word[i];
+            //printf("ch = %c\n", ch);  
+            if (ch == '\0') break;
+                      
+            if (ch == ' ')
+            {
+                //printf("Добавляется слово %s\n", str);
+                words_list = WordNode__add_top(words_list, str);
+                str_size = 0;
+                str = (char*) realloc(str, str_size * sizeof(char));
+                continue;
+            }
+            str_size += 1;
+            str = (char*) realloc(str, str_size * sizeof(char));
+            str[str_size - 1] = ch;
+        }
+        WordNode__print_down_to_top(words_list, WordNode__print);
+        int number = atoi( WordNode__get_bottom(words_list)->word );
+        if( number != 0 && number % 2 == 0 )
+        {
+            result = WordNode__add_top(result, temp->word);
+            //printf(" = = = = = = = = = = %d\n", number);
+        }
+        words_list = WordNode__Destructor(words_list);
+        free(str);
+    }
+
+    string_list = WordNode__Destructor(string_list);
+
+    printf(" = = = = = Output = = = = =\n");
+    WordNode__print_down_to_top(result, WordNode__print_word);
+    result = WordNode__Destructor(result);
 
     return 0;
 }
 
-char** get_words_and_len_by_split(char* str, int* length, char* split)
-{
-    char** arrWords = (char**) calloc(*length, sizeof(char*));  // выделяем память под массив слов
+// реализация прототипов
 
-    char* p = strtok(str, split);                               // разбиваем один раз
-    while(p)                                                    // пока p не равен NULL мы в цикле
+struct WordNode* WordNode__Constructor(struct WordNode* object, char* word)
+{
+    object = (struct WordNode*) malloc(sizeof(struct WordNode));
+    printf("%p Constructor\n", object);
+    if (object == NULL)
     {
-        *length += 1;                                           // увеличиваем длину массива
-        arrWords = realloc(arrWords, *length * sizeof(char*));  // увеличиваем массив слов
-        arrWords[*length - 1] = (char*) calloc(strlen(p), sizeof(char));// память под слово
-        strcpy(arrWords[*length - 1], p);                       // копируем слово
-        p = strtok(NULL, split);                                // разделяем на лексему ещё 1ин раз
+        printf("Не выделилась память\n");
     }
 
-    return arrWords;                                            // возвращаем массив слов
+    object->left = NULL;
+    object->right = NULL;
+
+    object->word = (char*) calloc(strlen(word), sizeof(char));
+    if (object->word == NULL)
+    {
+        printf("Не выделилась память\n");
+    }
+    strcpy(object->word, word);
+
+    return object;
 }
 
-char** get_copy_words(char** words, int length)
+struct WordNode* WordNode__Destructor(struct WordNode* object)
 {
-    char** result = (char**) calloc(length, sizeof(char*));     // выделяем память под массив слов
-    for (int i = 0; i < length; i++)                            // проходимся по массиву слов
+    for (struct WordNode* temp = object; temp != NULL; )
     {
-        result[i] = (char*) calloc(strlen(words[i]), sizeof(char)); // выделяем память под слово
-        strcpy(result[i], words[i]);                            // копируем слово
+        free(temp->word);
+        object = temp;
+        printf("%p Destructor\n", object);
+        temp = temp->left;
+        free(object);
     }
-    return result;                                              // возвращаем массив слов
+    return NULL;
 }
 
-void words_destructor(char** arr, int length)
+struct WordNode* WordNode__add_top(struct WordNode* object, char* word)
 {
-    for (int i = 0; i < length; i++)    // проходимся по массиву слов
+    if (word == NULL)
     {
-        free(arr[i]);                   // освобожаем память от слова
+        return object;
     }
-    free(arr);                          // освобождаем память от массива
+
+    if (word[0] == '\0')
+    {
+        return object;
+    }
+
+    struct WordNode* new_node = WordNode__Constructor(new_node, word);
+    new_node->left = object;
+    if (object == NULL)
+    {
+        return new_node;
+    }
+    
+    object->right = new_node;
+    return new_node;
+}
+
+struct WordNode* WordNode__get_bottom(struct WordNode* object)
+{
+    if (object == NULL)
+    {
+        return NULL;
+    }
+    struct WordNode* temp = object;
+    while(temp->left != NULL)
+    {
+        temp = temp->left;
+    }
+    return temp;
+}
+
+void WordNode__print(struct WordNode* object)
+{
+    printf("\t{\n");
+    printf("\t\t\"left\": \"%p\",\n", object->left);
+    printf("\t\t\"right\": \"%p\",\n", object->right);
+    printf("\t\t\"word\": \"%s\",\n", object->word);
+    printf("\t},\n");
+}
+
+void WordNode__print_word(struct WordNode* object)
+{
+    printf("%s\n", object->word);
+}
+
+void WordNode__print_top_to_down(struct WordNode* object, void (*func)(struct WordNode* object))
+{
+    printf("[\n");
+    for(struct WordNode* temp = object; temp != NULL; temp = temp->left)
+    {
+        func(temp);
+    }
+    printf("]\n");
+}
+
+void WordNode__print_down_to_top(struct WordNode* object, void (*func)(struct WordNode* object))
+{
+    printf("[\n");
+    for(struct WordNode* temp = WordNode__get_bottom(object); temp != NULL ; temp = temp->right)
+    {
+        func(temp);
+    }
+    printf("]\n");
+}
+
+void WordNode__set_word(struct WordNode* object, char* word)
+{
+    free(object->word);
+    object->word = (char*) calloc(strlen(word), sizeof(char));
+    if ( object->word == NULL )
+    {
+        printf("Память не выделилась\n");
+        return;
+    }
+    strcpy(object->word, word);
+}
+
+int get_depth_long_int(long int N)
+{
+    int i = 0;
+    for( ; N>0; N = N / 10)
+    {
+        ++i;
+    }
+    return i;
+}
+
+char* get_string_with_number_hash(char* str, long int number)
+{
+    int len = get_depth_long_int(number);
+    char* substr = (char*) calloc(len, sizeof(char));
+    long int N = number;
+    for (int i = 0; i < len; i += 1)
+    {
+        char ch;
+        switch(N % 10)
+        {
+            case 0: ch = '0'; break;
+            case 1: ch = '1'; break;
+            case 2: ch = '2'; break;
+            case 3: ch = '3'; break;
+            case 4: ch = '4'; break;
+            case 5: ch = '5'; break;
+            case 6: ch = '6'; break;
+            case 7: ch = '7'; break;
+            case 8: ch = '8'; break;
+            case 9: ch = '9'; break;
+            default: ch = '_';
+        }
+        N = N / 10;
+        substr[i] = ch;
+    }
+    
+    char* result = (char*) calloc(len, sizeof(char));
+    for (int i = 0; i < len; i++)
+    {
+        result[i] = substr[(len - 1) - i];
+    }
+    free(substr);
+    
+    str = (char*) realloc(str, (5 + len) * sizeof(char));
+    strcat(str, result);
+    free(result);
+
+    return str;
 }
