@@ -1,7 +1,11 @@
+//библиотеки
+
 #include <unistd.h> //read()
 #include <stdio.h>  //printf()
 #include <stdlib.h> //calloc(), realloc(), free()
 #include <string.h> //strcpy(), strlen(), strcat()
+
+//прототипы
 
 struct WordNode
 {
@@ -17,6 +21,8 @@ struct WordNode* WordNode__get_by_index(struct WordNode* object, int index);
 void WordNode__set_word(struct WordNode* object, char* word);
 struct WordNode* get_words_file_list(const char path[]);
 char* copy_strg1_to_strg2(char* string1, char* string2);
+
+//главная функция
 
 int main()
 {
@@ -117,6 +123,8 @@ int main()
 
     return 0;
 }
+
+//реализация прототипов
 
 struct WordNode* WordNode__Constructor(struct WordNode* object, char* word)
 {
