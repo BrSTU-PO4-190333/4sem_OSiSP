@@ -6,8 +6,8 @@ void print_real_time()
     struct tm *ltm = localtime(&now);
     printf(
         "%02d:%02d:%02d\n",
-        1 + ltm->tm_hour,
-        1 + ltm->tm_min,
-        1 + ltm->tm_sec 
+        1 + ltm->tm_hour,                               // часы
+        1 + ltm->tm_min,                                // минуты
+        1 + ltm->tm_sec                                 // секунды
     );
 }

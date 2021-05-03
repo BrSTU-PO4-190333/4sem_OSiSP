@@ -1,4 +1,5 @@
-#include <math.h>
+#include <math.h>   // sqrt()
+
 #include "message_queue/message_queue.h"
 #include "my_ftoa/my_ftoa.h"
 #include "print_real_time/print_real_time.h"
@@ -36,7 +37,7 @@ int main(void)
         p, p, a, p, b, p, c, S
     );
 
-    char* message_S = my_ftoa(S);    // double to char*
+    char* message_S = my_ftoa(S);                       // double to char*
 
     print_real_time();
     mqd_t queue_s = get_opened_message_queue("/s");     // открытие очереди /s
