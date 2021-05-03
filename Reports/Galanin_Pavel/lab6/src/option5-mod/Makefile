@@ -1,23 +1,16 @@
-all:
-	mkdir -p bin
-	make compile_producer
-	make compile_consumer
-
 clean:
 	rm -rfv bin
 
-run:
-	make run_producer
-	make run_consumer
+compile_app1:
+	mkdir -p bin
+	cd bin; gcc ./../src/app1.c ./../src/message_queue/message_queue.c ./../src/my_ftoa/my_ftoa.c ./../src/print_real_time/print_real_time.c -lrt -o app1.out
 
-compile_producer:
-	cd bin; gcc ./../src/producer.c -lrt -o producer.out
+run_app1:
+	cd bin; ./app1.out
 
-run_producer:
-	cd bin; ./producer.out
+compile_app2:
+	mkdir -p bin
+	cd bin; gcc ./../src/app2.c ./../src/message_queue/message_queue.c ./../src/my_ftoa/my_ftoa.c ./../src/print_real_time/print_real_time.c -lrt -lm -o app2.out
 
-compile_consumer:
-	cd bin; gcc ./../src/consumer.c -lrt -o consumer.out
-
-run_consumer:
-	cd bin; ./consumer.out
+run_app2:
+	cd bin; ./app2.out
