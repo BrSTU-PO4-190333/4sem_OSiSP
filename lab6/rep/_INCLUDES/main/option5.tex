@@ -1,0 +1,140 @@
+\paragraph{Условие:} \hspace{0pt}
+
+\begin{table}[h]
+    \centering{}
+    \caption{Варианты}
+    \label{table:name}
+
+    \begin{tabular}{|l|l|p{10cm}|}
+        \hline
+        Вариант &   Средство взаимодействия &   Действия    \\  \hline
+        \hline
+        ...     &   ...                     &   ...         \\  \hline
+        5       &   Очереди сообщений       & Родитель передает потомку три стороны треугольника, потомок возвращает его площадь    \\  \hline
+        ...     &   ...                     &   ...         \\  \hline
+    \end{tabular}
+\end{table}
+
+\paragraph{Решение:} \hspace{0pt}
+
+\noindent\begin{minipage}{.47\textwidth}
+    \lstinputlisting[name=CMakeLists.txt,]
+    {../../src/option5/CMakeLists.txt}
+\end{minipage}
+\hfill
+\begin{minipage}{.47\textwidth}
+    \begin{lstlisting}[language=Terminal,]
+tree --charset ascii
+\end{lstlisting}
+    \begin{lstlisting}[language=Out,]
+.
+|-- build
+|-- CMakeLists.txt
+|-- README.md
+|-- README-ru.md
+`-- src
+    |-- main.c
+    |-- message_queue
+    |   |-- message_queue.c
+    |   `-- message_queue.h
+    `-- my_ftoa
+        |-- my_ftoa.c
+        `-- my_ftoa.h
+\end{lstlisting}
+\end{minipage}
+
+\newpage
+
+\lstinputlisting[language=C++, name=main.c,]
+{../../src/option5/src/main.c}
+
+\newpage
+
+\lstinputlisting[language=C++, name=message_queue.c,]
+{../../src/option5/src/message_queue/message_queue.c}
+
+\lstinputlisting[language=C++, name=my_ftoa.c,]
+{../../src/option5/src/my_ftoa/my_ftoa.c}
+
+\newpage
+
+\begin{lstlisting}[language=Terminal,]
+mkdir -p build
+cd build
+cmake ..
+cmake --build .
+./main
+\end{lstlisting}
+
+\begin{lstlisting}[language=Out,]
+::::: start [process 0] PID = 14003 PPID = 12430 :::::
+a = 2
+b = 2
+c = 5
+Not triangle
+2.000000 * 2.000000 not > 5.000000
+4.000000 not > 5.000000
+
+a = 3
+b = 4
+c = 5
+Is triagle
+3.000000 * 4.000000 > 5.000000
+7.000000 > 5.000000
+
+        = = = = = start part 1 = = = = =
+        ::::: start [parent process] PID = 14003 PPID = 12430 :::::
+"queue": "/abc" - открывается очередь
+mqd_t 3 - очередь открыта успешно
+"message": "3.000000" - сообщение отправляется
+mqd_t 3 - сообщение отправлено успешно
+"message": "4.000000" - сообщение отправляется
+mqd_t 3 - сообщение отправлено успешно
+"message": "5.000000" - сообщение отправляется
+mqd_t 3 - сообщение отправлено успешно
+        ::::: kill [parent process] PID = 14003 PPID = 12430 :::::
+        = = = = = end part 1 = = = = =
+        = = = = = my_handler = = = = =
+        = = = = = start part 2 = = = = =
+        ::::: start [child process] PID = 14007 PPID = 14003 :::::
+"queue": "/abc" - открывается очередь
+mqd_t 3 - очередь открыта успешно
+mqd_t 3 - получаем сообщение
+"message": "3.000000" - сообщение получено успешно
+mqd_t 3 - получаем сообщение
+"message": "4.000000" - сообщение получено успешно
+mqd_t 3 - получаем сообщение
+"message": "5.000000" - сообщение получено успешно
+"queue": "/abc" - очередь закрывается
+"queue": "/abc" - очередь закрыта успешно
+
+S = sqrt(
+        6.000000 *
+        * (6.000000 - 3.000000) *
+        * (6.000000 - 4.000000) *
+        * (6.000000 - 5.000000)
+) = 6.000000
+
+"queue": "/s" - открывается очередь
+mqd_t 4 - очередь открыта успешно
+"message": "6.000000" - сообщение отправляется
+mqd_t 4 - сообщение отправлено успешно
+        ::::: kill [child process] PID = 14007 PPID = 14003 :::::
+        = = = = = end part 2 = = = = =
+        = = = = = my_handler = = = = =
+        = = = = = start part 3 = = = = =
+        ::::: respawn [parent process] PID = 14003 PPID = 12430 :::::
+"queue": "/s" - открывается очередь
+mqd_t 4 - очередь открыта успешно
+mqd_t 4 - получаем сообщение
+"message": "6.0000000�H�" - сообщение получено успешно
+"queue": "/s" - очередь закрывается
+"queue": "/s" - очередь закрыта успешно
+        ::::: end [parent process] PID = 14003 PPID = 12430 :::::
+        = = = = = end part 3 = = = = =
+        = = = = = start part 4 = = = = =
+        ::::: respawn [child process] PID = 14007 PPID = 14003 :::::
+        ::::: end [child process] PID = 14007 PPID = 1 :::::
+        = = = = = end part 4 = = = = =
+::::: end [process 0] PID = 14007 PPID = 1 :::::
+\end{lstlisting}
