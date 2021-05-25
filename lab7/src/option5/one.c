@@ -52,7 +52,7 @@ int main()
         scanf("%s", str);                       //вводим строку
         char character = str[0];                //взяли первый символ со строки
 
-        int rand_number = get_random(1, 120);   //рандомное число [1; 120]
+        int rand_number = get_random(1, 35);    //рандомное число [1; 35]
         print_real_time();                      //печать реального времени
         printf(                                 //печать сообщения об отправке
             "Process %d send random_number: %d\n\n",
