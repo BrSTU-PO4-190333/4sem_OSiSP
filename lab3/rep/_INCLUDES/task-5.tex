@@ -1,0 +1,25 @@
+\subparagraph{Задание 5} \textbf{Условие}:
+
+Подсчитать при помощи конвейера команд количество блочных и количество символьных устройств ввода-вывода, доступных в системе.
+
+\textbf{Решение}:
+
+Вывожу количество блочных устройств.
+
+\begin{BashBox}
+ls -l /dev | grep ^b | wc -l
+\end{BashBox}
+
+\begin{OutBox}
+33
+\end{OutBox}
+
+Вывожу количество символьных устройств.
+
+\begin{BashBox}
+ls -l /dev | grep ^c | wc -l
+\end{BashBox}
+
+\begin{OutBox}
+180
+\end{OutBox}
