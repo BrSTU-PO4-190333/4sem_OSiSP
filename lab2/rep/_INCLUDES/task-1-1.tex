@@ -1,0 +1,83 @@
+\subparagraph{Задание 1} \textbf{Условие}:
+
+Изучить назначение и ключи команды ln.
+
+\begin{itemize}
+    \item создать жесткую ссылку на файл. Просмотреть содержимое файла, используя
+ссылку. Удалить файл. Просмотреть содержимое файла. Объяснить результат;
+создать жесткую ссылку на каталог. Объяснить результат;
+    \item создать жесткую ссылку на каталог. Объяснить результат;
+\end{itemize}
+
+\textbf{Решение}:
+
+Изучаем назначение и ключи команды ln
+
+\begin{BashBox}
+    man ln
+\end{BashBox}
+
+Создаем файл
+
+\begin{BashBox}
+    nano 1-1_file.txt
+\end{BashBox}
+
+Пишем текст
+
+\begin{BashBox}
+    The storm broke today
+    and the sun came out.
+\end{BashBox}
+
+Сохраняем нажатием: \textbf{Ctrl} + \textbf{X}, \textbf{Y}, \textbf{Enter}.
+
+Создаём жёсткую ссылку на файл
+
+\begin{BashBox}
+    ln 1-1_file.txt 1-1_file-link.txt
+\end{BashBox}
+
+Просматриваем содержимое файла с помощью сслыки
+
+\begin{BashBox}
+    cat 1-1_file-link.txt
+\end{BashBox}
+
+\begin{OutBox}
+    The storm broke today
+    and the sun came out.
+\end{OutBox}
+
+Удаляем файл
+
+\begin{BashBox}
+    rm 1-1_file.txt
+\end{BashBox}
+
+Просматриваем содержимое файла с помощью сслыки
+
+\begin{BashBox}
+    cat 1-1_file-link.txt
+\end{BashBox}
+
+\begin{OutBox}
+    The storm broke today
+    and the sun came out.
+\end{OutBox}
+
+Создаем каталог
+
+\begin{BashBox}
+    mkdir 1-1_katalog
+\end{BashBox}
+
+Создаем жёсткую ссылку на каталог
+
+\begin{BashBox}
+    ln 1-1_katalog 1-1_katalog-link
+\end{BashBox}
+
+\begin{OutBox}
+    ln: 1-1_katalog: hard link not allowed for directory
+\end{OutBox}

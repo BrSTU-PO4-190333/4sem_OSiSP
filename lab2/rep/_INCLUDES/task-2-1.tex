@@ -1,0 +1,146 @@
+\subparagraph{Задание 1} \textbf{Условие}:
+
+Изучите при помощи man опцию \verb|-l| команды \verb|ls|.
+Просмотрите права каталогов \verb|/etc|, \verb|/bin| и \verb|домашнего каталога|. Просмотрите права файлов, содержащиеся в этих каталогов. Выявите тенденции (файлов с какими правами в каких каталогах больше).
+Сделайте вывод.
+
+\textbf{Решение}:
+
+Изучаем при помощи man опцию -l команды ls.
+
+\begin{BashBox}
+    man ls
+\end{BashBox}
+
+\begin{OutBox}
+        -l     use a long listing format
+\end{OutBox}
+
+Просматриваем права каталога /etc
+
+\begin{BashBox}
+    ls -ld /etc
+\end{BashBox}
+
+\begin{OutBox}
+    drwxr-xr-x 140 root root 12288 Mar  1 16:21 /etc
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип       & Владелец  & Группы            & Остальные       \\ \hline
+        \hline
+        Символьная  запись  & d         & rwx       & r-x               & r-x             \\ \hline
+        Что значит          & директория& все права & доступ на чтение  & доступ на чтение\\ \hline
+    \end{tabular}
+\end{table}
+
+Просматриваем права каталога /bin
+
+\begin{BashBox}
+    ls -ld /bin
+\end{BashBox}
+
+\begin{OutBox}
+    lrwxrwxrwx 1 root root 7 Feb 25 21:42 /bin -> usr/bin
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип 	                & Владелец  & Группы    & Остальные \\ \hline
+        \hline
+        Символьная запись   & l 	                & rwx       & rwx       & rwx       \\ \hline
+        Что значит          & символическая ссылка  & все права & все права & все права \\ \hline
+    \end{tabular}
+\end{table}
+
+Просматриваем права \verb|домашнего каталога|.
+
+\begin{BashBox}
+    ls -ld ~
+\end{BashBox}
+
+\begin{OutBox}
+    drwxr-xr-x 29 pavel-innokentevich-galanin pavel-innokentevich-galanin 4096 Mar  1 21:21 /home/pavel-innokentevich-galanin
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип       & Владелец  & Группы            & Остальные       \\ \hline
+        \hline
+        Символьная  запись  & d         & rwx       & r-x               & r-x             \\ \hline
+        Что значит          & директория& все права & доступ на чтение  & доступ на чтение\\ \hline
+    \end{tabular}
+\end{table}
+
+Просмотр прав в каталоге /etc
+
+\begin{BashBox}
+    ls -l /etc
+\end{BashBox}
+
+Больше прав drwxr-xr-x
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип       & Владелец  & Группы            & Остальные       \\ \hline
+        \hline
+        Символьная  запись  & d         & rwx       & r-x               & r-x             \\ \hline
+        Что значит          & директория& все права & доступ на чтение  & доступ на чтение\\ \hline
+    \end{tabular}
+\end{table}
+
+Просмотр прав в каталоге /bin
+
+\begin{BashBox}
+    ls -l /bin
+\end{BashBox}
+
+\begin{OutBox}
+    lrwxrwxrwx 1 root root 7 Feb 25 21:42 /bin -> usr/bin
+\end{OutBox}
+
+\begin{BashBox}
+    ls -l /usr/bin
+\end{BashBox}
+
+Больше прав -rwxr-xr-x
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип   & Владелец  & Группы            & Остальные       \\ \hline
+        \hline
+        Символьная  запись  & -     & rwx       & r-x               & r-x             \\ \hline
+        Что значит          & файл  & все права & доступ на чтение  & доступ на чтение\\ \hline
+    \end{tabular}
+\end{table}
+
+Просмотр прав в каталоге /home
+
+\begin{BashBox}
+    ls -l /home
+\end{BashBox}
+
+Больше прав drwxr-xr-x
+
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип       & Владелец  & Группы            & Остальные       \\ \hline
+        \hline
+        Символьная  запись  & d         & rwx       & r-x               & r-x             \\ \hline
+        Что значит          & директория& все права & доступ на чтение  & доступ на чтение\\ \hline
+    \end{tabular}
+\end{table}

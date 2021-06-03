@@ -1,0 +1,139 @@
+\newpage
+
+\subparagraph{Задание 2} \textbf{Условие}:
+
+Изучите материал, посвящѐнный пользователям и группам пользователей.
+Изучите руководство по командам \verb|chown| и \verb|chgrp|.
+Выясните, кто является владельцем и к какой группе владельцов принадлежат файлы вашего домашнего каталога, каталогов \verb|/etc|, \verb|/root|, \verb|/bin| и \verb|/dev|.
+
+\textbf{Решение}:
+
+Изучаем руководство по команде chown
+
+\begin{BashBox}
+    man chown
+\end{BashBox}
+
+Изучаем руководство по команде chgrp
+
+\begin{BashBox}
+    man chgrp
+\end{BashBox}
+
+Выясняем владельца и групу владельца домашнего каталога
+
+\begin{BashBox}
+    ls -ld ~
+\end{BashBox}
+
+\begin{OutBox}
+    drwxr-xr-x 29 pavel-innokentevich-galanin pavel-innokentevich-galanin 4096 Mar  1 21:21 /home/pavel-innokentevich-galanin
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | }
+        \hline
+        Владелец                    & Группа владельца              \\ \hline
+        \hline
+        pavel-innokentevich-galanin & pavel-innokentevich-galanin   \\ \hline
+    \end{tabular}
+\end{table}
+
+Выясняем владельца и групу владельца /etc
+
+\begin{BashBox}
+    ls -ld /etc
+\end{BashBox}
+
+\begin{OutBox}
+    drwxr-xr-x 140 root root 12288 Mar  1 16:21 /etc
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | }
+        \hline
+        Владелец& Группа владельца  \\ \hline
+        \hline
+        root    & root              \\ \hline
+    \end{tabular}
+\end{table}
+
+Выясняем владельца и групу владельца /root
+
+\begin{BashBox}
+    ls -ld /root
+\end{BashBox}
+
+\begin{OutBox}
+    drwx------ 7 root root 4096 Feb 25 23:38 /root
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | }
+        \hline
+        Владелец& Группа владельца  \\ \hline
+        \hline
+        root    & root              \\ \hline
+    \end{tabular}
+\end{table}
+
+Выясняем владельца и групу владельца /bin
+
+\begin{BashBox}
+    ls -ld /bin
+\end{BashBox}
+
+\begin{OutBox}
+    lrwxrwxrwx 1 root root 7 Feb 25 21:42 /bin -> usr/bin
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | }
+        \hline
+        Владелец& Группа владельца  \\ \hline
+        \hline
+        root    & root              \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{BashBox}
+    ls -ld /usr/bin
+\end{BashBox}
+
+\begin{OutBox}
+    drwxr-xr-x 2 root root 57344 Mar  1 16:21 /usr/bin
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | }
+        \hline
+        Владелец& Группа владельца  \\ \hline
+        \hline
+        root    & root              \\ \hline
+    \end{tabular}
+\end{table}
+
+Выясняем владельца и групу владельца /dev
+
+\begin{BashBox}
+    ls -ld /dev
+\end{BashBox}
+
+\begin{OutBox}
+    drwxr-xr-x 22 root root 4540 Mar  1 15:58 /dev
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | l | }
+        \hline
+        Владелец& Группа владельца  \\ \hline
+        \hline
+        root    & root              \\ \hline
+    \end{tabular}
+\end{table}

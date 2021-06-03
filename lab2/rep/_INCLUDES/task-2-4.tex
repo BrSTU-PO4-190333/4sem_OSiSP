@@ -1,0 +1,108 @@
+\subparagraph{Задание 4} \textbf{Условие}:
+
+Изучите команду \verb|chmod|.
+Создайте в \verb|домашнем каталоге| любые четыре файла, установите при помощи восмеричных масок на каждый из них в отдельности следующие права:
+\begin{itemize}
+\item для себя все права, для группы и остальных - никаких;
+\item для себя чтение и запись, для группы чтение, для остальных - все;
+\item для себя исполнение и запись, для группы никаких, для остальных чтение;
+\item для себя запись, для группы все, для остальных - только запись.
+\end{itemize}
+
+\textbf{Решение}:
+
+\begin{table}[h!]
+    \centering
+    \caption{Восьмиричная маска для файла 1}
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип   & Владелец  & Группы    & Остальные \\ \hline
+        \hline
+        Что нужно           & файл  & все права & нет прав  & нет прав  \\ \hline
+        Символьная запись 	& -     & rwx 	    & --- 	    & ---       \\ \hline
+        Двоичная запись     & 	    & 111 	    & 000 	    & 000       \\ \hline
+        Восьмиричное запись & 	    & 7 	    & 0 	    & 0         \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{BashBox}
+    touch file1.txt
+    chmod 700 file1.txt
+    ls -l file1.txt
+\end{BashBox}
+
+\begin{OutBox}
+    -rwx------ 1 pavel-innokentevich-galanin pavel-innokentevich-galanin 0 Mar  1 23:59 file1.txt
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \caption{Восьмиричная маска для файла 2}
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип   & Владелец          & Группы    & Остальные \\ \hline
+        \hline
+        Что нужно           & файл  & чтение и запись   & чтение    & все права \\ \hline
+        Символьная запись 	& -     & rw- 	            & r-- 	    & rwx       \\ \hline
+        Двоичная запись     & 	    & 110 	            & 100 	    & 111       \\ \hline
+        Восьмиричное запись & 	    & 6 	            & 4 	    & 7         \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{BashBox}
+    touch file2.txt
+    chmod 647 file2.txt
+    ls -l file2.txt
+\end{BashBox}
+
+\begin{OutBox}
+    -rw-r--rwx 1 pavel-innokentevich-galanin pavel-innokentevich-galanin 0 Mar  1 23:59 file2.txt
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \caption{Восьмиричная маска для файла 3}
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип   & Владелец              & Группы    & Остальные \\ \hline
+        \hline
+        Что нужно           & файл  & исполнение и запись   & нет прав  & чтение    \\ \hline
+        Символьная запись 	& -     & -wx 	                & --- 	    & r--       \\ \hline
+        Двоичная запись     & 	    & 011 	                & 000 	    & 100       \\ \hline
+        Восьмиричное запись & 	    & 3 	                & 0 	    & 4         \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{BashBox}
+    touch file3.txt
+    chmod 304 file3.txt
+    ls -l file3.txt
+\end{BashBox}
+
+\begin{OutBox}
+    --wx---r-- 1 pavel-innokentevich-galanin pavel-innokentevich-galanin 0 Mar  1 23:59 file3.txt
+\end{OutBox}
+
+\begin{table}[h!]
+    \centering
+    \caption{Восьмиричная маска для файла 4}
+    \begin{tabular}{ | l | l | l | l | l | }
+        \hline
+        Описание            & Тип   & Владелец  & Группы    & Остальные \\ \hline
+        \hline
+        Что нужно           & файл  & запись    & все прав  & запись    \\ \hline
+        Символьная запись 	& -     & -w- 	    & rwx 	    & -w-       \\ \hline
+        Двоичная запись     & 	    & 010 	    & 111 	    & 010       \\ \hline
+        Восьмиричное запись & 	    & 2	        & 7 	    & 2         \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{BashBox}
+    touch file4.txt
+    chmod 272 file4.txt
+    ls -l file4.txt
+\end{BashBox}
+
+\begin{OutBox}
+    --w-rwx-w- 1 pavel-innokentevich-galanin pavel-innokentevich-galanin 0 Mar  2 00:00 file4.txt
+\end{OutBox}
