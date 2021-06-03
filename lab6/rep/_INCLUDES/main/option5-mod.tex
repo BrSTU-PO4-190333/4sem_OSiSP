@@ -1,0 +1,163 @@
+\subsection*{Модифицированная версия (две программы))}
+
+В программе номер один вводим стороны треугольника. В программе номер один Открываем очередь. В программе номер один строны треугольника отправляем в очередь.
+
+В программе номер два открываем очередь с тем же именем и принимаем сообщения (очередь закрываем). В программе номер два происходит вычисление площади треугольника по формуле Герона. В программе номер два открываем очередь и отправляем сообщение с площадью.
+
+В программе номер один открывем очередь и принимаем сообщение с площадью (очередь закрываем).
+
+\newpage
+
+\lstinputlisting[
+    name=Makefile,
+    language=Make,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-mod/Makefile}
+
+\lstinputlisting[
+    name=app1.c,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-mod/src/app1.c}
+
+\lstinputlisting[
+    name=app2.c,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-mod/src/app2.c}
+
+\lstinputlisting[
+    name=message_queue.h,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-mod/src/message_queue/message_queue.h}
+
+\lstinputlisting[
+    name=message_queue.c,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-mod/src/message_queue/message_queue.c}
+
+\lstinputlisting[
+    name=my_ftoa.h,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-mod/src/my_ftoa/my_ftoa.h}
+
+\lstinputlisting[
+    name=my_ftoa.c,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-mod/src/my_ftoa/my_ftoa.c}
+
+\lstinputlisting[
+    name=print_real_time.h,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-mod/src/print_real_time/print_real_time.h}
+
+\lstinputlisting[
+    name=print_real_time.c,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-mod/src/print_real_time/print_real_time.c}
+
+%
+
+\begin{lstlisting}[language=Terminal, basicstyle=\ttfamily\scriptsize]
+make compile_app1
+\end{lstlisting}
+
+\begin{lstlisting}[language=Out, basicstyle=\ttfamily\scriptsize]
+mkdir -p bin
+cd bin; gcc ./../src/app1.c ./../src/message_queue/message_queue.c ./../src/my_ftoa/my_ftoa.c ./../src/print_real_time/print_real_time.c -lrt -o app1.out
+\end{lstlisting}
+
+\begin{lstlisting}[language=Terminal, basicstyle=\ttfamily\scriptsize]
+make run_app1
+\end{lstlisting}
+
+\begin{lstlisting}[language=Out, basicstyle=\ttfamily\scriptsize]
+cd bin; ./app1.out
+a = 4
+b = 5
+c = 6
+01:16:53
+        "queue": "/abc" - открывается очередь
+        mqd_t 3 - очередь открыта успешно
+01:16:53
+        "message": "4.000000" - сообщение отправляется
+        mqd_t 3 - сообщение отправлено успешно
+01:16:53
+        "message": "5.000000" - сообщение отправляется
+        mqd_t 3 - сообщение отправлено успешно
+01:16:53
+        "message": "6.000000" - сообщение отправляется
+        mqd_t 3 - сообщение отправлено успешно
+01:16:53
+        "queue": "/s" - открывается очередь
+        mqd_t 4 - очередь открыта успешно
+01:16:53
+        mqd_t 4 - получаем сообщение
+        "message": "9.921567" - сообщение получено успешно
+01:17:07
+        "queue": "/s" - очередь закрывается
+        "queue": "/s" - очередь закрыта успешно
+\end{lstlisting}
+
+\newpage
+
+\begin{lstlisting}[language=Terminal, basicstyle=\ttfamily\scriptsize]
+make compile_app2
+\end{lstlisting}
+    
+\begin{lstlisting}[language=Out, basicstyle=\ttfamily\scriptsize]
+mkdir -p bin
+cd bin; gcc ./../src/app2.c ./../src/message_queue/message_queue.c ./../src/my_ftoa/my_ftoa.c ./../src/print_real_time/print_real_time.c -lrt -lm -o app2.out
+\end{lstlisting}
+    
+\begin{lstlisting}[language=Terminal, basicstyle=\ttfamily\scriptsize]
+make run_app2
+\end{lstlisting}
+    
+\begin{lstlisting}[language=Out, basicstyle=\ttfamily\scriptsize]
+cd bin; ./app2.out
+01:17:07
+        "queue": "/abc" - открывается очередь
+        mqd_t 3 - очередь открыта успешно
+01:17:07
+        mqd_t 3 - получаем сообщение
+        "message": "4.000000" - сообщение получено успешно
+01:17:07
+        mqd_t 3 - получаем сообщение
+        "message": "5.000000" - сообщение получено успешно
+01:17:07
+        mqd_t 3 - получаем сообщение
+        "message": "6.000000" - сообщение получено успешно
+01:17:07
+        "queue": "/abc" - очередь закрывается
+        "queue": "/abc" - очередь закрыта успешно
+
+S = sqrt(
+        7.500000 *
+        * (7.500000 - 4.000000) *
+        * (7.500000 - 5.000000) *
+        * (7.500000 - 6.000000)
+) = 9.921567
+
+01:17:07
+        "queue": "/s" - открывается очередь
+        mqd_t 4 - очередь открыта успешно
+01:17:07
+        "message": "9.921567" - сообщение отправляется
+        mqd_t 4 - сообщение отправлено успешно
+\end{lstlisting}
