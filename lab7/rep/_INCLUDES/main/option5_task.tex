@@ -1,0 +1,128 @@
+\begin{center}
+    \textbf{Вариант V}
+\end{center}
+
+\paragraph{Условие:}
+
+Певый процесс в цикле ожидает ввода символа с потока stdin,
+после чего пишет в файл случайное число,
+каждый раз открывая и закрывая за собой файл.
+Второй процесс забирает из файла числа
+и выводит на экран соответствующему числу количeство любых символов.
+
+\paragraph{Решение:} \hspace{0pt}
+
+\lstinputlisting[language=Make, name=Makefile,]
+{../../src/option5/Makefile}
+
+\lstinputlisting[language=C++, name=one.c,]
+{../../src/option5/one.c}
+
+\lstinputlisting[language=C++, name=two.c,]
+{../../src/option5/two.c}
+
+\newpage
+
+\noindent\begin{minipage}{.47\textwidth}
+    \begin{lstlisting}[name=Tetminal 1,]
+make c1
+    \end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{.47\textwidth}
+    \begin{lstlisting}[name=Tetminal 2,]
+make c2
+    \end{lstlisting}
+\end{minipage}
+
+\noindent\begin{minipage}{.47\textwidth}
+    \begin{lstlisting}[name=Tetminal 1,]
+make r1
+    \end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{.47\textwidth}
+    \begin{lstlisting}[name=Tetminal 2,]
+make r2
+    \end{lstlisting}
+\end{minipage}
+
+\noindent\begin{minipage}{.47\textwidth}
+    \begin{lstlisting}[name=Tetminal 1,]
+./one.out
+08:19:18 : Enter the symbol: q
+08:19:18 : Process 8497 send random_number: 9
+
+08:19:23 : Enter the symbol: 2
+08:19:25 : Process 8497 send random_number: 12
+
+08:19:25 : Enter the symbol: 3
+08:19:29 : Process 8497 send random_number: 3
+
+08:19:29 : Enter the symbol: 4
+08:19:29 : Process 8497 send random_number: 6
+
+08:19:29 : Enter the symbol: 5
+08:19:30 : Process 8497 send random_number: 9
+
+08:19:30 : Enter the symbol: q
+08:19:32 : Process 8497 send random_number: 11
+
+08:19:32 : Enter the symbol: w
+08:19:32 : Process 8497 send random_number: 32
+
+08:19:32 : Enter the symbol: e
+08:19:33 : Process 8497 send random_number: 3
+
+08:19:33 : Enter the symbol: r
+08:19:33 : Process 8497 send random_number: 30
+
+08:19:33 : Enter the symbol: t
+08:19:33 : Process 8497 send random_number: 32
+
+08:19:33 : Enter the symbol: y
+08:19:35 : Process 8497 send random_number: 3
+
+08:19:35 : Enter the symbol: 
+    \end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{.47\textwidth}
+    \begin{lstlisting}[name=Tetminal 2,]
+./two.out
+08:19:23 : Process 8514 get message: 9
+08:19:23 : jIwmvmXGq
+
+08:19:25 : Process 8514 get message: 12
+08:19:25 : sZpQdcCDAFr
+
+08:19:29 : Process 8514 get message: 3
+08:19:29 : Nzq
+
+08:19:29 : Process 8514 get message: 6
+08:19:29 : WENyss
+
+08:19:30 : Process 8514 get message: 9
+08:19:30 : cJAGcbsp
+
+08:19:32 : Process 8514 get message: 11
+08:19:32 : IzneoZpZBxY
+
+08:19:32 : Process 8514 get message: 32
+08:19:32 : oOsNEnZZLyqnHqBrtyoJeJnThKZqHdM
+
+08:19:33 : Process 8514 get message: 3
+08:19:33 : UWZ
+
+08:19:33 : Process 8514 get message: 30
+08:19:33 : GqxEaUUWJsXISYfnOKXiklTqJBuBE
+
+08:19:33 : Process 8514 get message: 32
+08:19:33 : ahvFlChnyqfbfegtvkDcCocTFbBkfA
+
+08:19:35 : Process 8514 get message: 3
+08:19:35 : Sf
+
+
+    \end{lstlisting}
+\end{minipage}
