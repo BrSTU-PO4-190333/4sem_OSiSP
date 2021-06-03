@@ -1,0 +1,121 @@
+\subparagraph{Часть III} Вариант 5, 15
+
+Откройте любой текстовый файл и добавляйте в стандартном выводе к имени процессов не число, а очередное слово из этого файла.
+
+\textbf{Решение}:
+
+\lstinputlisting[
+    name=main.c,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-part3/src/main.c}
+
+\lstinputlisting[
+    name=lorem100.html,
+    language=HTML,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-part3/lorem100.html}
+
+\newpage
+
+\lstinputlisting[
+    name=Makefile,
+    language=make,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-part3/Makefile}
+
+\paragraph{}
+Компиляция
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+mkdir -p bin
+cd bin; gcc ./../src/main.c -o app
+\end{lstlisting}
+
+\paragraph{}
+Test 1 (ps)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test1
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | ./app
+~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+    PID TTY          TIME CMD
+1745 pts/2    00:00:00 bash
+2905 pts/2    00:00:00 make
+2906 pts/2    00:00:00 sh
+2907 pts/2    00:00:00 ps
+2908 pts/2    00:00:00 app
+~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+2906 pts/2    00:00:00 shsit
+2908 pts/2    00:00:00 appconsectetur
+\end{lstlisting}
+
+\paragraph{}
+Test 2 (ps | sort)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test2
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | sort | ./app
+~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+1745 pts/2    00:00:00 bash
+2924 pts/2    00:00:00 make
+2925 pts/2    00:00:00 sh
+2926 pts/2    00:00:00 ps
+2927 pts/2    00:00:00 sh
+2928 pts/2    00:00:00 app
+    PID TTY          TIME CMD
+~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+2924 pts/2    00:00:00 makeipsum
+2926 pts/2    00:00:00 pssit
+2928 pts/2    00:00:00 appconsectetur
+\end{lstlisting}
+
+\paragraph{}
+Test 3 (ps | head -n 4)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test3
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | head -n 4 | ./app
+~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+    PID TTY          TIME CMD
+1745 pts/2    00:00:00 bash
+2938 pts/2    00:00:00 make
+2939 pts/2    00:00:00 sh
+~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+2938 pts/2    00:00:00 makedolor
+\end{lstlisting}
+
+\paragraph{}
+Test 4 (ps | tail -n 4)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test4
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | tail -n 4 | ./app
+~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+2954 pts/2    00:00:00 sh
+2955 pts/2    00:00:00 ps
+2956 pts/2    00:00:00 sh
+2957 pts/2    00:00:00 app
+~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+2954 pts/2    00:00:00 shLorem
+2956 pts/2    00:00:00 shdolor
+\end{lstlisting}

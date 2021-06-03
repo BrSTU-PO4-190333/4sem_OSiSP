@@ -1,0 +1,132 @@
+\subparagraph{Часть II} Вариант 5, 15
+
+\textbf{Условие}:
+Написать  программу,  которая  получает  со  стандартного  потока  ввода список активных процессов, и выводит в стандартный поток вывода процессы только с четными PID, добавив к имени процессов любое число. Протестировать с использованием конвейеров в различных комбинациях вашей программы и команд ps, sort, head, tail.
+
+\textbf{Решение}:
+
+\lstinputlisting[
+    name=Makefile,
+    language=make,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-part2/Makefile}
+
+\newpage
+
+\lstinputlisting[
+    name=main.c,
+    language=C++,
+    basicstyle=\ttfamily\scriptsize,
+]
+{../../src/option5-part2/src/main.c}
+
+\newpage
+
+\paragraph{}
+Компиляция
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make
+\end{lstlisting}
+
+\begin{lstlisting}[ language=out, basicstyle=\ttfamily\scriptsize, ]
+mkdir -p bin
+cd bin; gcc ./../src/main.c -o app
+\end{lstlisting}
+    
+\paragraph{}
+Тест 1 (ps)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test1
+\end{lstlisting}
+
+\begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | ./app
+ ~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+  PID TTY          TIME CMD
+ 1745 pts/2    00:00:00 bash
+ 6516 pts/2    00:00:00 make
+ 6517 pts/2    00:00:00 sh
+ 6518 pts/2    00:00:00 ps
+ 6519 pts/2    00:00:00 app
+ ~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+ 6516 pts/2    00:00:00 make447124886
+ 6518 pts/2    00:00:00 ps723179902
+\end{lstlisting}
+
+\paragraph{}
+Тест 2 (ps | sort)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test2
+\end{lstlisting}
+
+\begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | sort | ./app
+ ~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+ 1745 pts/2    00:00:00 bash
+ 6524 pts/2    00:00:00 make
+ 6525 pts/2    00:00:00 sh
+ 6526 pts/2    00:00:00 ps
+ 6527 pts/2    00:00:00 sort
+ 6528 pts/2    00:00:00 app
+  PID TTY          TIME CMD
+ ~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+ 6524 pts/2    00:00:00 make846930886
+ 6526 pts/2    00:00:00 ps480069024
+ 6528 pts/2    00:00:00 app424238335
+\end{lstlisting}
+
+\paragraph{}
+Тест 3 (ps | head -n 4)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test3
+\end{lstlisting}
+
+\begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | head -n 4 | ./app
+ ~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+  PID TTY          TIME CMD
+ 1745 pts/2    00:00:00 bash
+ 6534 pts/2    00:00:00 make
+ 6535 pts/2    00:00:00 sh
+ ~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+ 6534 pts/2    00:00:00 make447124886
+\end{lstlisting}
+
+\paragraph{}
+Тест 4 (ps | tail -n 4)
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make test4
+\end{lstlisting}
+
+\begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
+cd bin; ps | tail -n 4 | ./app
+ ~ ~ ~ ~ ~ file descriptor = 0 ~ ~ ~ ~ ~
+ 6544 pts/2    00:00:00 sh
+ 6545 pts/2    00:00:00 ps
+ 6546 pts/2    00:00:00 tail
+ 6547 pts/2    00:00:00 app
+ ~ ~ ~ ~ ~ file descriptor = 1 ~ ~ ~ ~ ~
+ 6544 pts/2    00:00:00 sh569721492
+ 6546 pts/2    00:00:00 tail447124886
+\end{lstlisting}
+
+\paragraph{}
+Очистка проекта
+
+\begin{lstlisting}[ language=Terminal, basicstyle=\ttfamily\scriptsize, ]
+make clean
+\end{lstlisting}
+    
+\begin{lstlisting}[ language=Out, basicstyle=\ttfamily\scriptsize, ]
+rm -rfv bin
+removed 'bin/app'
+removed directory 'bin'
+\end{lstlisting}
+
+\newpage
