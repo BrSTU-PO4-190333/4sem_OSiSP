@@ -1,0 +1,174 @@
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+%\usepackage{listingsutf8}
+
+% Светлый малиново-красный -- малиновый
+\definecolor{my_keyword}{HTML}{d73a49}
+% Перламутрово-ежевичный -- Маренго
+\definecolor{my_comment}{HTML}{6a737d}
+% Джинсовый синий -- Зелёно-синий Крайола
+\definecolor{my_string}{HTML}{005cc5}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{ % string literal style
+    % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+    backgroundcolor=\color{white},
+    % the size of the fonts that are used for the code
+    % размер шрифтов, которые используются для кода 
+    basicstyle=\ttfamily,
+    % sets if automatic breaks should only happen at whitespace
+    %breakatwhitespace=false,
+    % sets automatic line breaking
+    % устанавливает автоматический разрыв строки 
+    breaklines=true,
+    % sets the caption-position
+    % устанавливает позицию заголовка
+    captionpos=t,
+    % comment style
+    commentstyle=\color{my_comment}\ttfamily,
+    % if you want to delete keywords from the given language
+    %deletekeywords={...},
+    % if you want to add LaTeX within your code 
+    %escapeinside={\%*}{*)},
+    % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    % позволяет использовать символы, отличные от ASCII; только для 8-битных кодировок, не работает с UTF-8 
+    extendedchars=\true,
+    % start line enumeration with line 1000
+    %firstnumber=1000,
+    % adds a frame around the code
+    %frame=single,
+    frame=lines, 
+    % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+    % пробелы в коментариях не съедать
+    keepspaces=true,
+    % keyword style
+    % Стиль ключевых слов: int, char, void, while, else
+    keywordstyle=\color{my_keyword}\ttfamily,
+    % the language of the code
+    %language=Octave,                 
+    inputencoding=utf8,
+    % if you want to add more keywords to the set
+    % если вы хотите добавить больше ключевых слов в набор 
+    %morekeywords={*,...},
+    % where to put the line-numbers; possible values are (none, left, right)
+    % куда поставить номера строк; возможные значения (нет, слева, справа) 
+    numbers=left,
+    % how far the line-numbers are from the code
+    % как далеко номера строк от кода
+    %numbersep=5pt,
+    % the style that is used for the line-numbers
+    %numberstyle=\tiny\color{mygray},
+    % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    % если не установлен, цвет рамки может быть изменен при переносе строки в не-черном тексте (например, комментарии (здесь зеленый))
+    % цвет рамки
+    %rulecolor=\color{green},
+    % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    % везде показывать пробелы, добавляя особые подчеркивания; он переопределяет 'showstringspaces'
+    % вместо пробелов крышка
+    showspaces=false,      
+    % underline spaces within strings only
+    % подчеркивание пробелов только внутри строк
+    showstringspaces=true,
+    % show tabs within strings adding particular underscores
+    % отображать табы внутри строк, добавляя определенные подчеркивания 
+    showtabs=false,
+    % the step between two line-numbers. If it's 1, each line will be numbered
+    % шаг нумерации
+    stepnumber=1,
+    % string literal style
+    % Стиль литералов: строка в printf("строка");
+    stringstyle=\color{mauve}\ttfamily,
+    % sets default tabsize to 2 spaces
+    % установить размер табуляции по умолчанию на 2 пробела 
+    tabsize=2,
+    % show the filename of files included with \lstinputlisting; also try caption instead of title
+    title=Листинг: \lstname \arabic{lstlisting},
+    literate=
+        {Ö}{{\"O}}1
+        {Ä}{{\"A}}1
+        {Ü}{{\"U}}1
+        {ß}{{\ss}}1
+        {ü}{{\"u}}1
+        {ä}{{\"a}}1
+        {ö}{{\"o}}1
+        {~}{{\textasciitilde}}1
+        {а}{{\selectfont\char224}}1
+        {б}{{\selectfont\char225}}1
+        {в}{{\selectfont\char226}}1
+        {г}{{\selectfont\char227}}1
+        {д}{{\selectfont\char228}}1
+        {е}{{\selectfont\char229}}1
+        {ё}{{\"e}}1
+        {ж}{{\selectfont\char230}}1
+        {з}{{\selectfont\char231}}1
+        {и}{{\selectfont\char232}}1
+        {й}{{\selectfont\char233}}1
+        {к}{{\selectfont\char234}}1
+        {л}{{\selectfont\char235}}1
+        {м}{{\selectfont\char236}}1
+        {н}{{\selectfont\char237}}1
+        {о}{{\selectfont\char238}}1
+        {п}{{\selectfont\char239}}1
+        {р}{{\selectfont\char240}}1
+        {с}{{\selectfont\char241}}1
+        {т}{{\selectfont\char242}}1
+        {у}{{\selectfont\char243}}1
+        {ф}{{\selectfont\char244}}1
+        {х}{{\selectfont\char245}}1
+        {ц}{{\selectfont\char246}}1
+        {ч}{{\selectfont\char247}}1
+        {ш}{{\selectfont\char248}}1
+        {щ}{{\selectfont\char249}}1
+        {ъ}{{\selectfont\char250}}1
+        {ы}{{\selectfont\char251}}1
+        {ь}{{\selectfont\char252}}1
+        {э}{{\selectfont\char253}}1
+        {ю}{{\selectfont\char254}}1
+        {я}{{\selectfont\char255}}1
+        {А}{{\selectfont\char192}}1
+        {Б}{{\selectfont\char193}}1
+        {В}{{\selectfont\char194}}1
+        {Г}{{\selectfont\char195}}1
+        {Д}{{\selectfont\char196}}1
+        {Е}{{\selectfont\char197}}1
+        {Ё}{{\"E}}1
+        {Ж}{{\selectfont\char198}}1
+        {З}{{\selectfont\char199}}1
+        {И}{{\selectfont\char200}}1
+        {Й}{{\selectfont\char201}}1
+        {К}{{\selectfont\char202}}1
+        {Л}{{\selectfont\char203}}1
+        {М}{{\selectfont\char204}}1
+        {Н}{{\selectfont\char205}}1
+        {О}{{\selectfont\char206}}1
+        {П}{{\selectfont\char207}}1
+        {Р}{{\selectfont\char208}}1
+        {С}{{\selectfont\char209}}1
+        {Т}{{\selectfont\char210}}1
+        {У}{{\selectfont\char211}}1
+        {Ф}{{\selectfont\char212}}1
+        {Х}{{\selectfont\char213}}1
+        {Ц}{{\selectfont\char214}}1
+        {Ч}{{\selectfont\char215}}1
+        {Ш}{{\selectfont\char216}}1
+        {Щ}{{\selectfont\char217}}1
+        {Ъ}{{\selectfont\char218}}1
+        {Ы}{{\selectfont\char219}}1
+        {Ь}{{\selectfont\char220}}1
+        {Э}{{\selectfont\char221}}1
+        {Ю}{{\selectfont\char222}}1
+        {Я}{{\selectfont\char223}}1
+        {і}{{\selectfont\char105}}1
+        {ї}{{\selectfont\char168}}1
+        {є}{{\selectfont\char185}}1
+        {ґ}{{\selectfont\char160}}1
+        {І}{{\selectfont\char73}}1
+        {Ї}{{\selectfont\char136}}1
+        {Є}{{\selectfont\char153}}1
+        {Ґ}{{\selectfont\char128}}1
+        {"}{{\selectfont"}}1
+        {�}{{\selectfont?}}1,
+}

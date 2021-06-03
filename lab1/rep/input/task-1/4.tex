@@ -1,0 +1,22 @@
+\subsection{Удаление директорий (rmdir)}
+
+\subparagraph{1) Что нужно было сделать?}
+
+Удалить созданные ранее подкаталоги.
+
+\subparagraph{2) Как это сделали?}
+
+\begin{MyVerbatimCode}[label=Debian terminal]
+pavel-innokentevich-galanin@aspire-one-725:~$ ls
+Apps     Documents  Music     Public     Videos    katalog2
+Desktop  Downloads  Pictures  Templates  katalog1  www
+pavel-innokentevich-galanin@aspire-one-725:~$ rmdir katalog1
+pavel-innokentevich-galanin@aspire-one-725:~$ rmdir katalog2
+pavel-innokentevich-galanin@aspire-one-725:~$ ls
+Apps     Documents  Music     Public     Videos
+Desktop  Downloads  Pictures  Templates  www
+\end{MyVerbatimCode}
+
+\subparagraph{3) Что получилось?}
+
+Командой rmdir удалили каталог.
