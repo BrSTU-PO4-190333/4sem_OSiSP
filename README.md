@@ -10,10 +10,10 @@
 
 ## Demo
 
-- [lab1](https://github.com/Pavel-Innokentevich-Galanin/gpi_6coursework/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб1.pdf)
-- [lab2](https://github.com/Pavel-Innokentevich-Galanin/gpi_6coursework/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб2.pdf)
-- [lab3](https://github.com/Pavel-Innokentevich-Galanin/gpi_6coursework/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб3.pdf)
-- [lab4](https://github.com/Pavel-Innokentevich-Galanin/gpi_6coursework/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб4.pdf)
-- [lab5](https://github.com/Pavel-Innokentevich-Galanin/gpi_6coursework/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб5.pdf)
-- [lab6](https://github.com/Pavel-Innokentevich-Galanin/gpi_6coursework/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб6.pdf)
-- [lab7](https://github.com/Pavel-Innokentevich-Galanin/gpi_6coursework/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб7.pdf)
+- [lab1](https://github.com/Pavel-Innokentevich-Galanin/4sem_OSiSP/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб1.pdf)
+- [lab2](https://github.com/Pavel-Innokentevich-Galanin/4sem_OSiSP/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб2.pdf)
+- [lab3](https://github.com/Pavel-Innokentevich-Galanin/4sem_OSiSP/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб3.pdf)
+- [lab4](https://github.com/Pavel-Innokentevich-Galanin/4sem_OSiSP/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб4.pdf)
+- [lab5](https://github.com/Pavel-Innokentevich-Galanin/4sem_OSiSP/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб5.pdf)
+- [lab6](https://github.com/Pavel-Innokentevich-Galanin/4sem_OSiSP/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб6.pdf)
+- [lab7](https://github.com/Pavel-Innokentevich-Galanin/4sem_OSiSP/blob/gh-pages/ОСиСП_ПО-4_Галанин_лаб7.pdf)
